@@ -4,8 +4,8 @@ import sqlalchemy as db
 def data_insertions() -> None:
     """
     Insert to the previously created database two new people:
-    - Homer Simpson, whose hobby is Beer.
-    - Lisa Simpson, whose hobby is Saxophone.
+    - Homer Simpson, who's hobby is Beer.
+    - Lisa Simpson, who's hobby is Saxophone.
     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.
     """
     engine = db.create_engine('sqlite:///databases/people.db')
