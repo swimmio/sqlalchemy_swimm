@@ -11,7 +11,7 @@ def selections(min_time: int, min_bytes: int) -> typing.List[db.engine.RowProxy]
     :type min_time: int
     :param min_bytes: minimum size in bytes.
     :type min_bytes: int
-    :return: All the rows (as sqlalchemy returns them)  who fir the criteria.
+    :return: All the rows (as sqlalchemy returns them) who fit the criteria.
     :rtype: typing.List[db.engine.RowProxy]
     """
     engine = db.create_engine('sqlite:///databases/rockemsocks.db')
