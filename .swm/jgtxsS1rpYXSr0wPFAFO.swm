@@ -1,0 +1,68 @@
+{
+    "id": "jgtxsS1rpYXSr0wPFAFO",
+    "name": "Table Flipper",
+    "dod": "Make the tests pass.",
+    "description": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.",
+    "summary": "In this unit we've learned how to manually define the most basic Table objects. Later on we'll learn how to both get table metadata automatically from our database and create more flexible Pythonic objects to represent our data.",
+    "tests": [
+        "python -m pytest tests/test_create_tables.py"
+    ],
+    "hints": [
+        "Use the primitive sqlalchemy objects to structure your tables and columns as the unit defines, look at the documentation to find the relevant flags and switches."
+    ],
+    "swimmPatch": {
+        "src/create_tables.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/create_tables.py b/src/create_tables.py\nindex 6009e49..a9a880e 100644\n--- a/src/create_tables.py\n+++ b/src/create_tables.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -1,6 +1,3 @@",
+                        "-import sqlalchemy as db",
+                        "-",
+                        "-",
+                        " def create_tables() -> None:",
+                        "     \"\"\"",
+                        "     Create the following tables:"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "Note that you can also create the tables one by one using their relevant `create` methods. Using `meta.create_all()` is a shorthand for creating _all_ of the defined tables."
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -13,20 +10,4 @@",
+                        "         * 'hobby': string, not nullable",
+                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
+                        "     \"\"\"",
+                        "-    engine = db.create_engine('sqlite:///databases/people.db')",
+                        "+    pass",
+                        "-    meta = db.MetaData()",
+                        "-    users = db.Table(",
+                        "-        'users',",
+                        "-        meta,",
+                        "-        db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
+                        "-        db.Column('first_name', db.String, nullable=False),",
+                        "-        db.Column('last_name', db.String, nullable=False),",
+                        "-    )",
+                        "-    hobbies = db.Table(",
+                        "-        'hobbies',",
+                        "-        meta,",
+                        "-        db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
+                        "-        db.Column('hobby', db.String, nullable=False),",
+                        "-        db.Column('user_id', db.Integer, db.ForeignKey('users.id')),",
+                        "-    )",
+                        "-    meta.create_all(engine)"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.2",
+    "file_version": "1.0.3"
+}
