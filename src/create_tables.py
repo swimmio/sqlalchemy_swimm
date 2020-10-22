@@ -3,7 +3,7 @@ import sqlalchemy as db
 
 def create_tables() -> None:
     """
-    Create the following tables:
+    Create the following tables in a database called `people.db` (located in `./databases/people.db`):
     - 'users' table with the following fields:
         * 'id': integer, primary key, autoincremented
         * 'first_name': string, not nullable
