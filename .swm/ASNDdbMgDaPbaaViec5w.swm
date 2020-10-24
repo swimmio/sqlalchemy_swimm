@@ -1,0 +1,46 @@
+{
+    "id": "ASNDdbMgDaPbaaViec5w",
+    "name": "Natural Selection",
+    "dod": "Make the tests pass.",
+    "description": "Congratulations! You've passed the interview and got your dream job at the _Rock Em' Socks!_ music emporium!\n\nYou've just got your first assignment and it's time for you to realize that just like any other typical job requirements, the skills they listed are most certainly not the skills you need to employ. In our case, although they said you just need to learn how to _write_ to DBs, you also need to learn how to _read_ from them to!!\n\nIn this unit you'll need to help filter out music tracks in the `rockemsocks.db` database based on their size (in bytes) and length (in milliseconds).",
+    "summary": "In this unit we've learned how to `select` from a table using SQLAlchemy.\n\nNotice how similar it was to `insert`ing into a table: create the relevant query object and execute it through a connection to the database.\n\nAlso note that SQLAlchemy has several ways to use conjunctions: either by using it's own functions (`and_`, `or_`) or by using the overloaded operators it has implmenented for us already (like the bitwise `&` and `|`).",
+    "tests": [
+        "python -m pytest tests/test_selections.py"
+    ],
+    "hints": [
+        "Think about how you get data out from a table using regular SQL queries and find the right equivalent in SQLAlchemy."
+    ],
+    "swimmPatch": {
+        "src/selections.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/selections.py b/src/selections.py\nindex 9ec602e..41f4f3b 100644\n--- a/src/selections.py\n+++ b/src/selections.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -14,14 +14,4 @@",
+                        "     :return: All the rows (as sqlalchemy returns them) who fit the criteria.",
+                        "     :rtype: typing.List[db.engine.RowProxy]",
+                        "     \"\"\"",
+                        "-    engine = db.create_engine('sqlite:///databases/rockemsocks.db')",
+                        "+    pass",
+                        "-    meta = db.MetaData()",
+                        "-    meta.reflect(bind=engine)",
+                        "-    tracks = meta.tables['tracks']",
+                        "-",
+                        "-    with engine.connect() as connection:",
+                        "-        clause = (tracks.c.Milliseconds > min_time) & (tracks.c.Bytes > min_bytes)",
+                        "-        query = db.select([tracks.c.TrackId]).where(clause)",
+                        "-        results = connection.execute(query).fetchall()",
+                        "-",
+                        "-    return results"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.2",
+    "file_version": "1.0.3"
+}
