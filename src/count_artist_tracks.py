@@ -1,4 +1,3 @@
-import typing
 import sqlalchemy as db
 from sqlalchemy.sql import func
 
