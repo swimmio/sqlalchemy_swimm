@@ -2,7 +2,7 @@
     "id": "jgtxsS1rpYXSr0wPFAFO",
     "name": "Table Flipper",
     "dod": "Make the tests pass.",
-    "description": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.",
+    "description": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.\n\n# Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_creating_table.htm",
     "summary": "In this unit we've learned how to manually define the most basic Table objects. Later on we'll learn how to both get table metadata automatically from our database and create more flexible Pythonic objects to represent our data.",
     "tests": [
         "python -m pytest tests/test_create_tables.py"
