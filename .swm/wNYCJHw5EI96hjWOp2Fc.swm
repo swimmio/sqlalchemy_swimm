@@ -2,7 +2,7 @@
     "id": "wNYCJHw5EI96hjWOp2Fc",
     "name": "Warming the Engines",
     "dod": "Make the tests pass.",
-    "description": "Before applying for your dream job at the musical emporium of *Rock Em' Socks!*, you'll first need to connect to some database.\n\nThe following unit will cover the basics of connecting to a database and getting some superficial data about it's structure.\n\nIt seems like the tests ask you to return a list of all the table names in the DB, try and find an easy way to achieve that with the bare minimum amount of code possible.\n\nDo note that you've been provided with the sample `helloworldb.db` database to use in this unit.",
+    "description": "Before applying for your dream job at the musical emporium of *Rock Em' Socks!*, you'll first need to connect to some database.\n\nThe following unit will cover the basics of connecting to a database and getting some superficial data about it's structure.\n\nIt seems like the tests ask you to return a list of all the table names in the DB, try and find an easy way to achieve that with the bare minimum amount of code possible.\n\nDo note that you've been provided with the sample `helloworldb.db` database to use in this unit.\n\n# Recommended references\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_connecting_to_database.htm",
     "summary": "Something you'll find in every code that deals with SQLAlchemy is initializing an `Engine`, the object used to connect and interact with a database.\n\nIn this unit you've learned how to connect to a database, thus beginning your journy with Python and SQLAlchemy!",
     "tests": [
         "python -m pytest tests/test_connect.py"
