@@ -1,0 +1,55 @@
+{
+    "id": "wNYCJHw5EI96hjWOp2Fc",
+    "name": "Warming the Engines",
+    "dod": "Make the tests pass.",
+    "description": "Before applying for your dream job at the musical emporium of *Rock Em' Socks!*, you'll first need to connect to some database.\n\nThe following unit will cover the basics of connecting to a database and getting some superficial data about it's structure.\n\nIt seems like the tests ask you to return a list of all the table names in the DB, try and find an easy way to achieve that with the bare minimum amount of code possible.\n\nDo note that you've been provided with the sample `helloworldb.db` database to use in this unit.\n\n# Recommended references\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_connecting_to_database.htm",
+    "summary": "Something you'll find in every code that deals with SQLAlchemy is initializing an `Engine`, the object used to connect and interact with a database.\n\nIn this unit you've learned how to connect to a database, thus beginning your journy with Python and SQLAlchemy!",
+    "tests": [
+        "python -m pytest tests/test_connect.py"
+    ],
+    "hints": [
+        "This is the most basic part of any SQLAlchemy project, any online tutorial will give you 50% of the solution!",
+        "After finding the first part of it, try looking a bit into what methods the generated object implements and find one who suits your needs."
+    ],
+    "swimmPatch": {
+        "src/connect.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/connect.py b/src/connect.py\nindex 9e05ae8..0f409eb 100644\n--- a/src/connect.py\n+++ b/src/connect.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "Just a personal shorthand for `sqlalchemy`. Another popular variation is `sa` though I personally find `db` more suiting."
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -1,5 +1,4 @@",
+                        " import typing",
+                        "-import sqlalchemy as db",
+                        " ",
+                        " ",
+                        " def connect_to_helloworldb() -> typing.List[str]:"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": [
+                            "Notice the connection string passed to the `create_engine` method, it will be different depending on the type of DB you're using."
+                        ]
+                    },
+                    "hunkDiffLines": [
+                        "@@ -9,5 +8,4 @@",
+                        "     :return: Names of the tables in the connected DB.",
+                        "     :rtype: typing.List[str]",
+                        "     \"\"\"",
+                        "-    engine = db.create_engine('sqlite:///databases/helloworldb.db')",
+                        "+    pass",
+                        "-    return engine.table_names()"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.2",
+    "file_version": "1.0.3"
+}
