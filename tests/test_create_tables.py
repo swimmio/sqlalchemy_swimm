@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import sqlalchemy as db
 from sqlalchemy.engine import reflection
@@ -15,18 +13,26 @@ def db_engine() -> db.engine.Engine:
 
 
 @pytest.fixture(scope='module')
+def db_meta() -> db.MetaData:
+    return db.MetaData()
+
+
+@pytest.fixture(scope='module')
 def db_inspector(db_engine: db.engine.Engine) -> reflection.Inspector:
     return db.inspect(db_engine)
 
 
-def setup_function():
-    os.unlink('./databases/people.db')
-    create_tables.create_tables()
+def truncate_tables(db_engine: db.engine.Engine, db_meta: db.MetaData) -> None:
+    with db_engine.connect() as connection:
+        for table in db_meta.sorted_tables:
+            connection.execute(table.delete())
 
 
 @pytest.mark.parametrize('mode', [MODE_CORE, MODE_ORM])
-def test_tables(mode, db_inspector: reflection.Inspector) -> None:
-    os.unlink('./databases/people.db')
+def test_tables(
+    mode: str, db_engine: db.engine.Engine, db_meta: db.MetaData, db_inspector: reflection.Inspector
+) -> None:
+    truncate_tables(db_engine, db_meta)
     if mode == MODE_CORE:
         create_tables.create_tables()
     if mode == MODE_ORM:
