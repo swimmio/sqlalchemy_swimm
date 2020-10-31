@@ -1,0 +1,59 @@
+{
+    "id": "XAjXhiBI1jGZ3DgOTUeT",
+    "name": "Genre War",
+    "dod": "Make the tests pass.",
+    "description": "",
+    "summary": "",
+    "tests": [
+        "python -m pytest tests/test_profitable_music_genre.py"
+    ],
+    "hints": [],
+    "swimmPatch": {
+        "src/profitable_music_genre.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/profitable_music_genre.py b/src/profitable_music_genre.py\nindex cad6f0b..4497ad1 100644\n--- a/src/profitable_music_genre.py\n+++ b/src/profitable_music_genre.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -2,7 +2,6 @@",
+                        " import decimal",
+                        " import sqlalchemy as db",
+                        " from sqlalchemy.orm import sessionmaker",
+                        "-from sqlalchemy.sql import func",
+                        " ",
+                        " from src import rockemsocks",
+                        " "
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -17,14 +16,4 @@",
+                        "     The second member in this pairing is called 'genre_name' and it's the musical genre for which we're counting the profits.",
+                        "     The pairings are returned in a descending order according to the their total price.",
+                        "     \"\"\"",
+                        "-    session = Session()",
+                        "+    pass",
+                        "-    return (",
+                        "-        session.query(",
+                        "-            func.sum(rockemsocks.Tracks.UnitPrice).label('total_price'), rockemsocks.Genres.Name.label('genre_name')",
+                        "-        )",
+                        "-        .join(rockemsocks.Genres)",
+                        "-        .join(rockemsocks.InvoiceItem)",
+                        "-        .group_by(rockemsocks.Genres.GenreId)",
+                        "-        .order_by(db.desc('total_price'))",
+                        "-        .all()",
+                        "-    )"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}
