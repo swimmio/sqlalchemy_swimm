@@ -1,0 +1,69 @@
+{
+    "id": "eyfdbNMm5Rr89xCTHz9z",
+    "name": "Constrained Table Flipper ORM",
+    "dod": "Make the tests pass.",
+    "description": "",
+    "summary": "",
+    "tests": [
+        "python -m pytest tests/test_create_table_constraints.py"
+    ],
+    "hints": [],
+    "swimmPatch": {
+        "src/create_tables_constraint_orm.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/create_tables_constraint_orm.py b/src/create_tables_constraint_orm.py\nindex 4aff862..9efe77a 100644\n--- a/src/create_tables_constraint_orm.py\n+++ b/src/create_tables_constraint_orm.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -1,8 +1,3 @@",
+                        "-import sqlalchemy as db",
+                        "-from sqlalchemy.ext.declarative import declarative_base",
+                        "-from sqlalchemy.sql.schema import CheckConstraint, UniqueConstraint",
+                        "-",
+                        "-",
+                        " def create_tables_constraints_orm() -> None:",
+                        "     \"\"\"",
+                        "     Create the following tables using the SQLAlchemy ORM in a database called `people.db` (located in `./databases/people.db`):"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -16,23 +11,4 @@",
+                        "         * 'hobby': string, not nullable, INDEXED (index name: 'ix_hobbies_hobby')",
+                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
+                        "     \"\"\"",
+                        "-    engine = db.create_engine('sqlite:///databases/people.db')",
+                        "+    pass",
+                        "-    Base = declarative_base()",
+                        "-",
+                        "-    class Users(Base):",
+                        "-        __tablename__ = 'users'",
+                        "-        __table_args__ = (",
+                        "-            CheckConstraint('last_name == \"Simpson\"', name='simpson_clause'),",
+                        "-            UniqueConstraint('first_name', 'last_name', name='unique_name_clause'),",
+                        "-        )",
+                        "-        id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                        "-        first_name = db.Column(db.String, nullable=False)",
+                        "-        last_name = db.Column(db.String, nullable=False)",
+                        "-",
+                        "-    class Hobbies(Base):",
+                        "-        __tablename__ = 'hobbies'",
+                        "-        id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                        "-        hobby = db.Column(db.String, nullable=False, index=True)",
+                        "-        user_id = db.Column(db.Integer, db.ForeignKey('users.id'))",
+                        "-",
+                        "-    Base.metadata.create_all(engine)"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}
