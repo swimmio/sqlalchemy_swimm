@@ -9,16 +9,16 @@ class Tracks(Base):
     TrackId = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     Name = db.Column(db.String(200), nullable=False)
     AlbumId = db.Column(db.Integer, db.ForeignKey('albums.AlbumId'))
-    MediaType = db.Column(
+    MediaTypeId = db.Column(
         db.Integer,
         db.ForeignKey('media_types.MediaId'),
         nullable=False,
     )
-    GenereId = db.Column(db.Integer, db.ForeignKey('generes.GenereId'))
+    GenreId = db.Column(db.Integer, db.ForeignKey('genres.GenreId'))
     Composer = db.Column(db.String(220))
     Milliseconds = db.Column(db.Integer, nullable=False)
     Bytes = db.Column(db.Integer)
-    UnitPrice = db.Column(db.Numeric(2))
+    UnitPrice = db.Column(db.Numeric(10, 2))
 
 
 class MediaTypes(Base):
@@ -33,9 +33,9 @@ class Playlists(Base):
     Name = db.Column(db.String(120))
 
 
-class Generes(Base):
-    __tablename__ = 'generes'
-    GenereId = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+class Genres(Base):
+    __tablename__ = 'genres'
+    GenreId = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     Name = db.Column(db.String(120))
 
 
@@ -86,3 +86,25 @@ class Employees(Base):
     Phone = db.Column(db.String(24))
     Fax = db.Column(db.String(24))
     Email = db.Column(db.String(60))
+
+
+class InvoiceItem(Base):
+    __tablename__ = 'invoice_items'
+    InvoiceLineId = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    InvoiceId = db.Column(db.Integer, db.ForeignKey('invoices.InvoiceId'), nullable=False)
+    TrackId = db.Column(db.Integer, db.ForeignKey('tracks.TrackId'), nullable=False)
+    UnitPrice = db.Column(db.Numeric(10, 2), nullable=False)
+    Quantity = db.Column(db.Integer, nullable=False)
+
+
+class Invoice(Base):
+    __tablename__ = 'invoices'
+    InvoiceId = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    CustomerId = db.Column(db.Integer, db.ForeignKey('customers.CustomerId'), nullable=False)
+    InvoiceDate = db.Column(db.DateTime, nullable=False)
+    BillingAddress = db.Column(db.String(70))
+    BillingCity = db.Column(db.String(40))
+    BillingState = db.Column(db.String(40))
+    BillingCountry = db.Column(db.String(40))
+    BillingPostalCode = db.Column(db.String(10))
+    Total = db.Column(db.Numeric(10, 2), nullable=False)
