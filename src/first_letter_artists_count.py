@@ -13,8 +13,8 @@ Session = sessionmaker(bind=engine)
 def get_first_letter_artists_count() -> typing.List[typing.Tuple[str, int]]:
     """
     Return a list of pairings describing how many artists start in each letter of the alphabet.
-    The first member in this pairing is the first letter in which the names in this group start with (eg. 'A', 'D', 'Q').
-    The second member in this pairing is the number of artists who's name starts with that letter.
+    The first member in this pairing will be called 'first_letter' and is the first letter in which the names in this group start with (eg. 'A', 'D', 'Q').
+    The second member in this pairing will be called 'count_artists' and is the number of artists who's name starts with that letter.
     The pairings are returned in a descending order according to the number of artists (most first, least last).
     Only pairings with a number of artists greater than 10 should be included in the returned list.
     """
