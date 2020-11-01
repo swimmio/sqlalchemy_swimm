@@ -22,17 +22,16 @@ def db_inspector(db_engine: db.engine.Engine) -> reflection.Inspector:
     return db.inspect(db_engine)
 
 
-def truncate_tables(db_engine: db.engine.Engine, db_meta: db.MetaData) -> None:
-    with db_engine.connect() as connection:
-        for table in db_meta.sorted_tables:
-            connection.execute(table.delete())
+def delete_db_structure(db_engine: db.engine.Engine, db_meta: db.MetaData) -> None:
+    db_meta.reflect(bind=db_engine)
+    db_meta.drop_all(bind=db_engine)
 
 
 @pytest.mark.parametrize('mode', [MODE_ORM])
 def test_tables(
     mode: str, db_engine: db.engine.Engine, db_meta: db.MetaData, db_inspector: reflection.Inspector
 ) -> None:
-    truncate_tables(db_engine, db_meta)
+    delete_db_structure(db_engine, db_meta)
     if mode == MODE_CORE:
         return
     if mode == MODE_ORM:
