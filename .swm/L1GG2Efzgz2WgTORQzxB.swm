@@ -1,0 +1,63 @@
+{
+    "id": "L1GG2Efzgz2WgTORQzxB",
+    "name": "The ABC Game",
+    "dod": "Make the tests pass.",
+    "description": "Good news! The `Alphabetical` corporation wants to sponsor `Rock Em' Socks!` !\n\nThere's a big promotion sale happening and they want in, but they have one condition: they want on the poster only the artists who's first letter is the most common out there. Alphabets!\n\nHelp arrange `Rock Em' Socks` unlikely sponsor's wishes.\n\nIn this unit we'll learn about using SQL functions and chaining multiple directives to our query.\n\n# Recommended References\n* https://docs.sqlalchemy.org/en/13/orm/query.html",
+    "summary": "In this unit we've covered a lot:\n* Grouping data using `group_by`.\n* Ordering data using `order_by` in combination with `desc` and `asc`.\n* When to use `filter` and when to use `having`.\n\nMost basic Query APIs have been covered here, so we're almost 100% ORM experts now!",
+    "tests": [
+        "python -m pytest tests/test_first_letter_artists_count.py"
+    ],
+    "hints": [
+        "There's an SQL function that can return a part of a string. Read about SQL's `SUBSTR` function.",
+        "Search for the right SQL directives in the docs. You're probably looking for `GROUP BY` or `ORDER BY` and their likes.",
+        "Most SQL directives can just be chained one after the other before the \"return functions\" as subsequent query methods.",
+        "We can't use `filter` after `group_by`. Read about SQL's `HAVING` directive."
+    ],
+    "swimmPatch": {
+        "src/first_letter_artists_count.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/first_letter_artists_count.py b/src/first_letter_artists_count.py\nindex 05d728c..9c0faf5 100644\n--- a/src/first_letter_artists_count.py\n+++ b/src/first_letter_artists_count.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -2,7 +2,6 @@",
+                        " ",
+                        " import sqlalchemy as db",
+                        " from sqlalchemy.orm import sessionmaker",
+                        "-from sqlalchemy.sql import func",
+                        " ",
+                        " from src import rockemsocks",
+                        " "
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -18,13 +17,4 @@",
+                        "     The pairings are returned in a descending order according to the number of artists (most first, least last).",
+                        "     Only pairings with a number of artists greater than 10 should be included in the returned list.",
+                        "     \"\"\"",
+                        "-    session = Session()",
+                        "+    pass",
+                        "-    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('first_letter')",
+                        "-    count_artists_col = func.count(rockemsocks.Artists.ArtistId).label('count_artists')",
+                        "-    return (",
+                        "-        session.query(first_letter_col, count_artists_col)",
+                        "-        .group_by('first_letter')",
+                        "-        .having(count_artists_col > 10)",
+                        "-        .order_by(db.desc('count_artists'))",
+                        "-        .all()",
+                        "-    )"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}

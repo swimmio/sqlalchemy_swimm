@@ -1,0 +1,64 @@
+{
+    "id": "JqH7RElWKXCQcrOQKfW0",
+    "name": "Insertion Syndrome ORM",
+    "dod": "Make the tests pass.",
+    "description": "Now after defining our own tables, time to insert into them.\n\nIn this unit we'll learn about how to send SQL statements to our DB, creating transactions and inserting data.\n\n# Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_creating_session.htm",
+    "summary": "In this unit we've learned how to create a session object and commit data to the DB.\n\nNote that usually we'll define a global `Session` object to be used as our session-factory, which we'll then create local `session` objects from whenever we'd like to make a new transaction.",
+    "tests": [
+        "python -m pytest tests/test_insertions.py"
+    ],
+    "hints": [
+        "Read about SQLAlchemy's `Session` object and how to work with it."
+    ],
+    "swimmPatch": {
+        "src/insertions_orm.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/insertions_orm.py b/src/insertions_orm.py\nindex 2d763a7..8fe34b8 100644\n--- a/src/insertions_orm.py\n+++ b/src/insertions_orm.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -1,10 +1,8 @@",
+                        " import sqlalchemy as db",
+                        " from sqlalchemy.ext.declarative import declarative_base",
+                        "-from sqlalchemy.orm import sessionmaker",
+                        " ",
+                        " engine = db.create_engine('sqlite:///databases/people.db')",
+                        " Base = declarative_base()",
+                        "-Session = sessionmaker(bind=engine)",
+                        " ",
+                        " ",
+                        " class Users(Base):"
+                    ]
+                },
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -28,14 +26,4 @@",
+                        "     - Lisa Simpson, who's hobby is Saxophone.",
+                        "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
+                        "     \"\"\"",
+                        "-    session = Session()",
+                        "+    pass",
+                        "-",
+                        "-    user_homer = Users(first_name='Homer', last_name='Simpson')",
+                        "-    user_lisa = Users(first_name='Lisa', last_name='Simpson')",
+                        "-    session.add_all([user_homer, user_lisa])",
+                        "-    session.commit()",
+                        "-",
+                        "-    hobby_homer = Hobbies(hobby='Beer', user_id=user_homer.id)",
+                        "-    hobby_lisa = Hobbies(hobby='Saxophone', user_id=user_lisa.id)",
+                        "-    session.add_all([hobby_homer, hobby_lisa])",
+                        "-    session.commit()"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.3",
+    "file_version": "1.0.3"
+}
