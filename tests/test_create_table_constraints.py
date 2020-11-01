@@ -1,7 +1,7 @@
 import pytest
 import sqlalchemy as db
 from sqlalchemy.engine import reflection
-from src import create_tables, create_tables_orm
+from src import create_tables_constraint_orm
 
 MODE_CORE = 'core'
 MODE_ORM = 'orm'
@@ -28,15 +28,15 @@ def truncate_tables(db_engine: db.engine.Engine, db_meta: db.MetaData) -> None:
             connection.execute(table.delete())
 
 
-@pytest.mark.parametrize('mode', [MODE_CORE, MODE_ORM])
+@pytest.mark.parametrize('mode', [MODE_ORM])
 def test_tables(
     mode: str, db_engine: db.engine.Engine, db_meta: db.MetaData, db_inspector: reflection.Inspector
 ) -> None:
     truncate_tables(db_engine, db_meta)
     if mode == MODE_CORE:
-        create_tables.create_tables()
+        return
     if mode == MODE_ORM:
-        create_tables_orm.create_tables_orm()
+        create_tables_constraint_orm.create_tables_constraints_orm()
     users_table_check(db_inspector)
     hobbies_table_check(db_inspector)
 
@@ -44,6 +44,11 @@ def test_tables(
 def users_table_check(db_inspector: reflection.Inspector) -> None:
     cols = [col['name'] for col in db_inspector.get_columns('users')]
     assert sorted(cols) == sorted(['id', 'first_name', 'last_name'])
+    unique_constraint = db_inspector.get_unique_constraints('users')[0]
+    assert unique_constraint['name'] == 'unique_name_clause'
+    assert sorted(unique_constraint['column_names']) == sorted(['first_name', 'last_name'])
+    check_constraint = db_inspector.get_check_constraints('users')[0]
+    assert check_constraint['name'] == 'simpson_clause'
 
 
 def hobbies_table_check(db_inspector: reflection.Inspector) -> None:
@@ -54,3 +59,6 @@ def hobbies_table_check(db_inspector: reflection.Inspector) -> None:
     assert foreign[0]['constrained_columns'] == ['user_id']
     assert foreign[0]['referred_columns'] == ['id']
     assert foreign[0]['referred_table'] == 'users'
+    hobby_index = db_inspector.get_indexes('hobbies')[0]
+    assert hobby_index['name'] == 'ix_hobbies_hobby'
+    assert hobby_index['column_names'][0] == 'hobby'

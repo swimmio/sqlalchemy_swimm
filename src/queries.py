@@ -12,7 +12,7 @@ def queries() -> typing.Tuple[str, str]:
     """
     Return exactly one pairing of (FirstName, LastName) representing the person who:
     1. Made a purchase in the name of a company.
-    2. Has his first name start with 'M'.
+    2. Their first name start's with 'M'.
     """
     session = Session()
     cust = rockemsocks.Customers
