@@ -2,12 +2,14 @@
     "id": "JqH7RElWKXCQcrOQKfW0",
     "name": "Insertion Syndrome ORM",
     "dod": "Make the tests pass.",
-    "description": "",
-    "summary": "",
+    "description": "Now after defining our own tables, time to insert into them.\n\nIn this unit we'll learn about how to send SQL statements to our DB, creating transactions and inserting data.\n\n# Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_creating_session.htm",
+    "summary": "In this unit we've learned how to create a session object and commit data to the DB.\n\nNote that usually we'll define a global `Session` object to be used as our session-factory, which we'll then create local `session` objects from whenever we'd like to make a new transaction.",
     "tests": [
         "python -m pytest tests/test_insertions.py"
     ],
-    "hints": [],
+    "hints": [
+        "Read about SQLAlchemy's `Session` object and how to work with it."
+    ],
     "swimmPatch": {
         "src/insertions_orm.py": {
             "diffType": "MODIFIED",
