@@ -2,8 +2,8 @@
     "id": "eyfdbNMm5Rr89xCTHz9z",
     "name": "Constrained Table Flipper ORM",
     "dod": "Make the tests pass.",
-    "description": "Remember \"Table Flipper ORM\"? Well, something there just felt a bit... off. You know that some things just don't make a lot of sense, so why not save ourselves some `if` statements in our Python code and let the DB do the work?\n\nIn this unit we'll learn about adding `constraint`s to our database.\n\n# Recommended References\n* https://docs.sqlalchemy.org/en/13/core/constraints.html",
-    "summary": "Using `constraint`s allows us to delegate some of our work directly to the database itself.\n\nNotice how there's more than one way to define some of our constraints: either as a paramater passed directly to the `Column` object (this works with SQLAlchemy Core too) or using the `__table_args__` attribute. Some can even be inlined as a parameter to the `Column` object (such as the `unique=True` or `index=True` parameters).",
+    "description": "Remember \"Table Flipper ORM\"? Well, something there just felt a bit... off. You know that some things just don't make a lot of sense, so why not save ourselves some `if` statements in our Python code and let the DB do the work?\n\nIn this unit we'll learn about adding `constraints` to our database.\n\n# Recommended References\n* https://docs.sqlalchemy.org/en/13/core/constraints.html",
+    "summary": "Using `constraints` allows us to delegate some of our work directly to the database itself.\n\nNotice how there's more than one way to define some of our constraints: either as a paramater passed directly to the `Column` object (this works with SQLAlchemy Core too) or using the `__table_args__` attribute. Some can even be inlined as a parameter to the `Column` object (such as the `unique=True` or `index=True` parameters).",
     "tests": [
         "python -m pytest tests/test_create_table_constraints.py"
     ],
