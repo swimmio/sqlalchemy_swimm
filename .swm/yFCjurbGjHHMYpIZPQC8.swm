@@ -2,12 +2,15 @@
     "id": "yFCjurbGjHHMYpIZPQC8",
     "name": "It Was Something Like...",
     "dod": "Make the tests pass.",
-    "description": "",
-    "summary": "",
+    "description": "Big Boss comes to you and tells you they need to find a customer that ordered something a while back. They can't really remember anything about them, although they're pretty sure they made an order under some corporate. Their name was something like Ma... Me... Mi... Well it started with an 'M'.\n\nIn this unit we'll learn about querying and filtering the data coming from our database.\n\n# Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm",
+    "summary": "In this unit we've learned about querying our database.\n\nNotice the usage of the `one` function after we've filtered all of our desired queries, it's only one of the ways we can actually \"fulfill\" our query and get the data back.",
     "tests": [
         "python -m pytest tests/test_queries.py"
     ],
-    "hints": [],
+    "hints": [
+        "Don't use Python to check for the `FirstName` string, try to think of an SQL directive that can find values who are alike.",
+        "SQLAlchemy's table columns support a `like` function. Read about SQL's `LIKE` directive."
+    ],
     "swimmPatch": {
         "src/queries.py": {
             "diffType": "MODIFIED",
