@@ -1,13 +1,13 @@
 import pytest
 import sqlalchemy as db
 from sqlalchemy.sql import func
-from sqlalchemy.sql.functions import count
 from src import count_artist_tracks
+from utils import rockemsocks
 
 
 @pytest.fixture(scope='module')
 def db_engine() -> db.engine.Engine:
-    return db.create_engine('sqlite:///databases/rockemsocks.db')
+    return db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
 
 
 @pytest.fixture(scope='module')
