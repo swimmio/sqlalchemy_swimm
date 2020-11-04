@@ -2,7 +2,7 @@
     "id": "8jEJ9lfX2BHTMTEJyimx",
     "name": "Table Flipper ORM",
     "dod": "Make the tests pass.",
-    "description": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n# Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping",
+    "description": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n## Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping",
     "summary": "In this unit we've started to work with SQLAlchemy's ORM.\n\nCreating a table using the ORM is not so different than the Core so most of the knowledge you've gathered will be applicable in both scenarios.",
     "tests": [
         "python -m pytest tests/test_create_tables.py"
