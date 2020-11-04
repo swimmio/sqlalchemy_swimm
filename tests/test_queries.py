@@ -1,12 +1,13 @@
 import pytest
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
-from src import queries, rockemsocks
+from src import queries
+from utils import rockemsocks
 
 
 @pytest.fixture(scope='module')
 def db_engine() -> db.engine.Engine:
-    return db.create_engine('sqlite:///databases/rockemsocks.db')
+    return db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
 
 
 @pytest.fixture(scope='module')
