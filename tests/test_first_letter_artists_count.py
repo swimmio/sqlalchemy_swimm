@@ -19,13 +19,13 @@ def db_session(db_engine: db.engine.Engine) -> db.orm.session.Session:
 def test_get_first_letter_artists_count(db_session: db.orm.session.Session) -> None:
     tested_result = [tuple(row) for row in first_letter_artists_count.get_first_letter_artists_count()]
     session = db_session()
-    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('first_letter')
+    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('artist_first_letter')
     count_artists_col = func.count(rockemsocks.Artists.ArtistId).label('count_artists')
     expected_result = [
         tuple(row)
         for row in (
             session.query(first_letter_col, count_artists_col)
-            .group_by('first_letter')
+            .group_by('artist_first_letter')
             .having(count_artists_col > 10)
             .order_by(db.desc('count_artists'))
             .all()
