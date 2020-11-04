@@ -1,12 +1,12 @@
-import typing
 import decimal
+import typing
+
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import func
+from utils import rockemsocks
 
-from src import rockemsocks
-
-engine = db.create_engine('sqlite:///databases/rockemsocks.db')
+engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
 Session = sessionmaker(bind=engine)
 
 
