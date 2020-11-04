@@ -1,9 +1,6 @@
 import sqlalchemy as db
 from sqlalchemy.ext.declarative import declarative_base
 
-ROCKEMSOCKSDB_CONNECTION_STRING = 'sqlite:///databases/rockemsocks.db'
-ROCKEMSOCKSDB_META = db.MetaData()
-
 Base = declarative_base()
 
 
