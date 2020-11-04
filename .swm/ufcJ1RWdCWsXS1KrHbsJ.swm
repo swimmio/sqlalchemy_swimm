@@ -14,22 +14,8 @@
     "swimmPatch": {
         "src/insertions.py": {
             "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/insertions.py b/src/insertions.py\nindex 9c07a16..3b95186 100644\n--- a/src/insertions.py\n+++ b/src/insertions.py",
+            "fileDiffHeader": "diff --git a/src/insertions.py b/src/insertions.py\nindex 4fecda3..e74f0bc 100644\n--- a/src/insertions.py\n+++ b/src/insertions.py",
             "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,6 +1,3 @@",
-                        "-import sqlalchemy as db",
-                        "-",
-                        "-",
-                        " def data_insertions() -> None:",
-                        "     \"\"\"",
-                        "     Insert to the previously created database two new people:"
-                    ]
-                },
                 {
                     "swimmHunkMetadata": {
                         "hunkComments": [
@@ -37,38 +23,33 @@
                         ]
                     },
                     "hunkDiffLines": [
-                        "@@ -8,25 +5,4 @@",
-                        "     - Lisa Simpson, who's hobby is Saxophone.",
+                        "@@ -10,21 +10,3 @@",
                         "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
                         "     \"\"\"",
-                        "-    engine = db.create_engine('sqlite:///databases/people.db')",
-                        "+    pass",
-                        "-    meta = db.MetaData()",
-                        "-    meta.reflect(bind=engine)",
-                        "-    users = meta.tables['users']",
-                        "-    hobbies = meta.tables['hobbies']",
+                        "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
                         "-",
                         "-    with engine.connect() as connection:",
                         "-        # Demonstrating single statement insertions",
                         "-        homer_id: int = connection.execute(",
-                        "-            users.insert(",
+                        "-            people.users.insert(",
                         "-                {'first_name': 'Homer', 'last_name': 'Simpson'},",
                         "-            ),",
                         "-        ).inserted_primary_key[0]",
                         "-        lisa_id: int = connection.execute(",
-                        "-            users.insert(",
+                        "-            people.users.insert(",
                         "-                {'first_name': 'Lisa', 'last_name': 'Simpson'},",
                         "-            ),",
                         "-        ).inserted_primary_key[0]",
                         "-        # Demonstrating multiple statements generation",
                         "-        connection.execute(",
-                        "-            hobbies.insert(), [{'hobby': 'Beer', 'user_id': homer_id}, {'hobby': 'Saxophone', 'user_id': lisa_id}]",
+                        "-            people.hobbies.insert(),",
+                        "-            [{'hobby': 'Beer', 'user_id': homer_id}, {'hobby': 'Saxophone', 'user_id': lisa_id}],",
                         "-        )"
                     ]
                 }
             ]
         }
     },
-    "app_version": "0.2.2",
+    "app_version": "0.2.4",
     "file_version": "1.0.3"
 }
