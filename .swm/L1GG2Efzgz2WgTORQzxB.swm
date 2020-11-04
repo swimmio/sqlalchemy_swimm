@@ -38,17 +38,17 @@
                         "hunkComments": []
                     },
                     "hunkDiffLines": [
-                        "@@ -18,13 +17,4 @@",
+                        "@@ -17,13 +16,4 @@",
                         "     The pairings are returned in a descending order according to the number of artists (most first, least last).",
                         "     Only pairings with a number of artists greater than 10 should be included in the returned list.",
                         "     \"\"\"",
                         "-    session = Session()",
                         "+    pass",
-                        "-    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('first_letter')",
+                        "-    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('artist_first_letter')",
                         "-    count_artists_col = func.count(rockemsocks.Artists.ArtistId).label('count_artists')",
                         "-    return (",
                         "-        session.query(first_letter_col, count_artists_col)",
-                        "-        .group_by('first_letter')",
+                        "-        .group_by('artist_first_letter')",
                         "-        .having(count_artists_col > 10)",
                         "-        .order_by(db.desc('count_artists'))",
                         "-        .all()",
@@ -59,5 +59,6 @@
         }
     },
     "app_version": "0.2.3",
-    "file_version": "1.0.3"
+    "file_version": "1.0.3",
+    "diff": "diff --git a/src/first_letter_artists_count.py b/src/first_letter_artists_count.py\nindex 05d728c..9c0faf5 100644\n--- a/src/first_letter_artists_count.py\n+++ b/src/first_letter_artists_count.py\n@@ -2,7 +2,6 @@\n \n import sqlalchemy as db\n from sqlalchemy.orm import sessionmaker\n-from sqlalchemy.sql import func\n \n from src import rockemsocks\n \n@@ -17,13 +16,4 @@\n     The pairings are returned in a descending order according to the number of artists (most first, least last).\n     Only pairings with a number of artists greater than 10 should be included in the returned list.\n     \"\"\"\n-    session = Session()\n+    pass\n-    first_letter_col = func.substr(rockemsocks.Artists.Name, 1, 1).label('artist_first_letter')\n-    count_artists_col = func.count(rockemsocks.Artists.ArtistId).label('count_artists')\n-    return (\n-        session.query(first_letter_col, count_artists_col)\n-        .group_by('artist_first_letter')\n-        .having(count_artists_col > 10)\n-        .order_by(db.desc('count_artists'))\n-        .all()\n-    )\n"
 }

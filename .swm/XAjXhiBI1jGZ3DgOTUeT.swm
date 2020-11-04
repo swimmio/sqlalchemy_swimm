@@ -21,7 +21,7 @@
                         "hunkComments": []
                     },
                     "hunkDiffLines": [
-                        "@@ -2,7 +2,6 @@",
+                        "@@ -1,7 +1,6 @@",
                         " import decimal",
                         " import sqlalchemy as db",
                         " from sqlalchemy.orm import sessionmaker",
@@ -36,7 +36,7 @@
                         "hunkComments": []
                     },
                     "hunkDiffLines": [
-                        "@@ -17,14 +16,4 @@",
+                        "@@ -17,15 +16,4 @@",
                         "     The second member in this pairing is called 'genre_name' and it's the musical genre for which we're counting the profits.",
                         "     The pairings are returned in a descending order according to the their total price.",
                         "     \"\"\"",
@@ -44,12 +44,13 @@
                         "+    pass",
                         "-    return (",
                         "-        session.query(",
-                        "-            func.sum(rockemsocks.Tracks.UnitPrice).label('total_price'), rockemsocks.Genres.Name.label('genre_name')",
+                        "-            func.sum(rockemsocks.Tracks.UnitPrice).label('total_invoice_profit'),",
+                        "-            rockemsocks.Genres.Name.label('genre_name'),",
                         "-        )",
                         "-        .join(rockemsocks.Genres)",
                         "-        .join(rockemsocks.InvoiceItem)",
                         "-        .group_by(rockemsocks.Genres.GenreId)",
-                        "-        .order_by(db.desc('total_price'))",
+                        "-        .order_by(db.desc('total_invoice_profit'))",
                         "-        .all()",
                         "-    )"
                     ]
@@ -58,5 +59,6 @@
         }
     },
     "app_version": "0.2.3",
-    "file_version": "1.0.3"
+    "file_version": "1.0.3",
+    "diff": "diff --git a/src/profitable_music_genre.py b/src/profitable_music_genre.py\nindex cad6f0b..4497ad1 100644\n--- a/src/profitable_music_genre.py\n+++ b/src/profitable_music_genre.py\n@@ -1,7 +1,6 @@\n import decimal\n import sqlalchemy as db\n from sqlalchemy.orm import sessionmaker\n-from sqlalchemy.sql import func\n \n from src import rockemsocks\n \n@@ -17,15 +16,4 @@\n     The second member in this pairing is called 'genre_name' and it's the musical genre for which we're counting the profits.\n     The pairings are returned in a descending order according to the their total price.\n     \"\"\"\n-    session = Session()\n+    pass\n-    return (\n-        session.query(\n-            func.sum(rockemsocks.Tracks.UnitPrice).label('total_invoice_profit'),\n-            rockemsocks.Genres.Name.label('genre_name'),\n-        )\n-        .join(rockemsocks.Genres)\n-        .join(rockemsocks.InvoiceItem)\n-        .group_by(rockemsocks.Genres.GenreId)\n-        .order_by(db.desc('total_invoice_profit'))\n-        .all()\n-    )\n"
 }
