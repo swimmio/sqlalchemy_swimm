@@ -1,6 +1,7 @@
 import typing
 
 import sqlalchemy as db
+from utils import rockemsocks
 
 
 def selections(min_time: int, min_bytes: int) -> typing.List[db.engine.RowProxy]:
@@ -14,10 +15,9 @@ def selections(min_time: int, min_bytes: int) -> typing.List[db.engine.RowProxy]
     :return: All the rows (as sqlalchemy returns them) who fit the criteria.
     :rtype: typing.List[db.engine.RowProxy]
     """
-    engine = db.create_engine('sqlite:///databases/rockemsocks.db')
-    meta = db.MetaData()
-    meta.reflect(bind=engine)
-    tracks = meta.tables['tracks']
+    engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
+    rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)
+    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']
 
     with engine.connect() as connection:
         clause = (tracks.c.Milliseconds > min_time) & (tracks.c.Bytes > min_bytes)

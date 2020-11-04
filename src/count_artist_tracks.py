@@ -1,5 +1,6 @@
 import sqlalchemy as db
 from sqlalchemy.sql import func
+from utils import rockemsocks
 
 
 def count_artist_tracks(artist_name: str) -> int:
@@ -11,12 +12,11 @@ def count_artist_tracks(artist_name: str) -> int:
     :return: number of tracks the artist has.
     :rtype: int
     """
-    engine = db.create_engine('sqlite:///databases/rockemsocks.db')
-    meta = db.MetaData()
-    meta.reflect(bind=engine)
-    tracks = meta.tables['tracks']
-    albums = meta.tables['albums']
-    artists = meta.tables['artists']
+    engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
+    rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)
+    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']
+    albums = rockemsocks.ROCKEMSOCKSDB_META.tables['albums']
+    artists = rockemsocks.ROCKEMSOCKSDB_META.tables['artists']
 
     with engine.connect() as connection:
         clause = artists.c.Name == artist_name
