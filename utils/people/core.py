@@ -1,6 +1,5 @@
 import sqlalchemy as db
 
-PEOPLEDB_CONNECTION_STRING = 'sqlite:///databases/people.db'
 PEOPLEDB_META = db.MetaData()
 
 users = db.Table(
