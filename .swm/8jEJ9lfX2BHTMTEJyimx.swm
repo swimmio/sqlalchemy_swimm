@@ -2,7 +2,7 @@
     "id": "8jEJ9lfX2BHTMTEJyimx",
     "name": "Table Flipper ORM",
     "dod": "Make the tests pass.",
-    "description": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n# Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm",
+    "description": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n## Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping",
     "summary": "In this unit we've started to work with SQLAlchemy's ORM.\n\nCreating a table using the ORM is not so different than the Core so most of the knowledge you've gathered will be applicable in both scenarios.",
     "tests": [
         "python -m pytest tests/test_create_tables.py"
@@ -13,54 +13,55 @@
     "swimmPatch": {
         "src/create_tables_orm.py": {
             "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/create_tables_orm.py b/src/create_tables_orm.py\nindex cf576b4..1505b2c 100644\n--- a/src/create_tables_orm.py\n+++ b/src/create_tables_orm.py",
+            "fileDiffHeader": "diff --git a/src/create_tables_orm.py b/src/create_tables_orm.py\nindex 0a2c760..ac91c2b 100644\n--- a/src/create_tables_orm.py\n+++ b/src/create_tables_orm.py",
             "hunks": [
                 {
                     "swimmHunkMetadata": {
                         "hunkComments": []
                     },
                     "hunkDiffLines": [
-                        "@@ -1,7 +1,3 @@",
-                        "-import sqlalchemy as db",
-                        "-from sqlalchemy.ext.declarative import declarative_base",
-                        "-",
-                        "-",
-                        " def create_tables_orm() -> None:",
+                        "@@ -15,4 +15,3 @@",
+                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
                         "     \"\"\"",
-                        "     Create the following tables using the SQLAlchemy ORM in a database called `people.db` (located in `./databases/people.db`):"
+                        "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
+                        "-    people.Base.metadata.create_all(engine)"
                     ]
-                },
+                }
+            ]
+        },
+        "utils/people/orm.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/utils/people/orm.py b/utils/people/orm.py\nindex 4988f18..812ef1e 100644\n--- a/utils/people/orm.py\n+++ b/utils/people/orm.py",
+            "hunks": [
                 {
                     "swimmHunkMetadata": {
                         "hunkComments": []
                     },
                     "hunkDiffLines": [
-                        "@@ -14,19 +10,4 @@",
-                        "         * 'hobby': string, not nullable",
-                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
-                        "     \"\"\"",
-                        "-    engine = db.create_engine('sqlite:///databases/people.db')",
-                        "+    pass",
-                        "-    Base = declarative_base()",
+                        "@@ -1,18 +1,1 @@",
+                        " import sqlalchemy as db",
+                        "-from sqlalchemy.ext.declarative import declarative_base",
                         "-",
-                        "-    class Users(Base):",
-                        "-        __tablename__ = 'users'",
-                        "-        id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-        first_name = db.Column(db.String, nullable=False)",
-                        "-        last_name = db.Column(db.String, nullable=False)",
+                        "-Base = declarative_base()",
                         "-",
-                        "-    class Hobbies(Base):",
-                        "-        __tablename__ = 'hobbies'",
-                        "-        id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-        hobby = db.Column(db.String, nullable=False)",
-                        "-        user_id = db.Column(db.Integer, db.ForeignKey('users.id'))",
                         "-",
-                        "-    Base.metadata.create_all(engine)"
+                        "-class Users(Base):",
+                        "-    __tablename__ = 'users'",
+                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                        "-    first_name = db.Column(db.String, nullable=False)",
+                        "-    last_name = db.Column(db.String, nullable=False)",
+                        "-",
+                        "-",
+                        "-class Hobbies(Base):",
+                        "-    __tablename__ = 'hobbies'",
+                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                        "-    hobby = db.Column(db.String, nullable=False)",
+                        "-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))"
                     ]
                 }
             ]
         }
     },
-    "app_version": "0.2.3",
+    "app_version": "0.2.4",
     "file_version": "1.0.3"
 }
