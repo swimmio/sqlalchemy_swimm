@@ -1,0 +1,39 @@
+{
+    "id": "ZkYY8Mv7brTSul4gxoIP",
+    "name": "Geographical Statistics",
+    "dod": "Make the tests pass.",
+    "description": "It's bookkeeping time in `Rock Em' Socks!` and Big Boss wants you to help the process.\nThey need to quantify the company's outreach (as you all want to keep your status as a true global superpower).\nHelp count the number of countries our customer's came from!\n\nIn this unit we'll learn about querying and grouping data.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying",
+    "summary": "In this unit we've learned how to query data from a database.\nMoreover, we've experimented with one of few ways to get unique results from a database (while, of course, there are many more).",
+    "tests": [
+        "python -m pytest tests/test_count_customer_countries.py"
+    ],
+    "hints": [
+        "Think what SQL statement can help you get unique data (there are a few!)",
+        "There's no need to use `len`, `SQLAlchemy` gives you a better way to count the number of rows returned."
+    ],
+    "swimmPatch": {
+        "src/count_customer_countries.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/count_customer_countries.py b/src/count_customer_countries.py\nindex 35d5b5d..47164b1 100644\n--- a/src/count_customer_countries.py\n+++ b/src/count_customer_countries.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -14,6 +14,4 @@",
+                        "     :return: Number of unique countries that customers live in.",
+                        "     :rtype: int",
+                        "     \"\"\"",
+                        "-    session = Session()",
+                        "+    pass",
+                        "-    cust = rockemsocks.Customers",
+                        "-    return session.query(cust.CustomerId).group_by(cust.Country).count()"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.4",
+    "file_version": "1.0.3"
+}
