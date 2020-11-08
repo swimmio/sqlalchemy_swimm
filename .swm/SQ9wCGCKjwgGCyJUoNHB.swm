@@ -1,0 +1,44 @@
+{
+    "id": "SQ9wCGCKjwgGCyJUoNHB",
+    "name": "By Popular Demand",
+    "dod": "Make the tests pass.",
+    "description": "In order to grant the customers at `Rock Em' Socks!` a better experience, Big Boss wants to optimize the delivery routes and shipment times. To do that, they'll need your help in figuring out where the demand it the highest.\n\nIn this Unit, we'll learn about subqueries and using multiple aggregators.\n\n## Recommended References\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#using-aliases-and-subqueries",
+    "summary": "In this Unit we've learned about `subqueries`, a way for us to select from a pre-existing selection.\n\n`subqueries` have many uses, one of which we've encountered here (aggregating on aggregators), but you can think of many other scenarios where logically separating our query (wether for clarity reasons or technical reasons) might be more preferable (though as always, try and [keep things simple](https://en.wikipedia.org/wiki/KISS_principle)).",
+    "tests": [
+        "python -m pytest tests/test_most_invoices.py"
+    ],
+    "hints": [
+        "You might need to logically separate your queries into several different queries.",
+        "Read about subqueries, `SQLAlchemy`'s way to select from a given selection."
+    ],
+    "swimmPatch": {
+        "src/most_invoices.py": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/most_invoices.py b/src/most_invoices.py\nindex 46fd2ff..3bad9b0 100644\n--- a/src/most_invoices.py\n+++ b/src/most_invoices.py",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -16,11 +16,4 @@",
+                        "     :return: Single pair of (BillingCity, `Count`) representing the city with the most invoices.",
+                        "     :rtype: typing.Tuple[str, int]",
+                        "     \"\"\"",
+                        "-    session = Session()",
+                        "+    pass",
+                        "-    inv = rockemsocks.Invoice",
+                        "-    count_subquery = (",
+                        "-        session.query(inv.BillingCity.label('city'), db.func.count(inv.BillingCity).label('count'))",
+                        "-        .group_by(inv.BillingCity)",
+                        "-        .subquery()",
+                        "-    )",
+                        "-    return session.query(db.func.max(count_subquery.c.count), count_subquery.c.city).one()"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.4",
+    "file_version": "1.0.3"
+}

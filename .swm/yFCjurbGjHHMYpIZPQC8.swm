@@ -5,16 +5,16 @@
     "description": "Big Boss comes to you and tells you they need to find a customer that ordered something a while back. They can't really remember anything about them, although they're pretty sure they made an order under some corporate. Their name was something like Ma... Me... Mi... Well it started with an 'M'.\n\nIn this unit we'll learn about querying and filtering the data coming from our database.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying",
     "summary": "In this unit we've learned about querying our database.\n\nNotice the usage of the `one` function after we've filtered all of our desired queries, it's only one of the ways we can actually \"fulfill\" our query and get the data back.",
     "tests": [
-        "python -m pytest tests/test_queries.py"
+        "python -m pytest tests/test_something_like.py"
     ],
     "hints": [
         "Don't use Python to check for the `FirstName` string, try to think of an SQL directive that can find values who are alike.",
         "SQLAlchemy's table columns support a `like` function. Read about SQL's `LIKE` directive."
     ],
     "swimmPatch": {
-        "src/queries.py": {
+        "src/something_like.py": {
             "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/queries.py b/src/queries.py\nindex 47a4350..85f9150 100644\n--- a/src/queries.py\n+++ b/src/queries.py",
+            "fileDiffHeader": "diff --git a/src/something_like.py b/src/something_like.py\nindex 47a4350..85f9150 100644\n--- a/src/something_like.py\n+++ b/src/something_like.py",
             "hunks": [
                 {
                     "swimmHunkMetadata": {
@@ -42,5 +42,6 @@
         }
     },
     "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "file_version": "1.0.3",
+    "diff": "diff --git a/src/something_like.py b/src/something_like.py\nindex 47a4350..85f9150 100644\n--- a/src/something_like.py\n+++ b/src/something_like.py\n@@ -14,13 +14,4 @@\n     1. Made a purchase in the name of a company.\n     2. Has his first name start with 'M'.\n     \"\"\"\n-    session = Session()\n+    pass\n-    cust = rockemsocks.Customers\n-    return (\n-        session.query(\n-            cust.FirstName,\n-            cust.LastName,\n-        )\n-        .filter((cust.Company != None) & (cust.FirstName.like('M%')))\n-        .one()\n-    )\n"
 }

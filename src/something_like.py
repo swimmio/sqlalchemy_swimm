@@ -8,7 +8,7 @@ engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)
 Session = sessionmaker(bind=engine)
 
 
-def queries() -> typing.Tuple[str, str]:
+def something_like() -> typing.Tuple[str, str]:
     """
     Return exactly one pairing of (FirstName, LastName) representing the person who:
     1. Made a purchase in the name of a company.
