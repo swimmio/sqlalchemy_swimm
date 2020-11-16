@@ -4,6 +4,9 @@
     "dod": "Make the tests pass.",
     "description": "The final skill you'll need to attain before your big interview for \"Rock Em' Socks!\" is how to insert into them. What good is the database you've just created if you can't put data in it? ~and they said nothing about \"reading data\" on the job listing so...~\n\nIn this unit you'll insert some data (specified in the function's docstring as per usual) into the `people.db` you've created in the previous unit.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_executing_expression.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#insert-expressions",
     "summary": "In this unit we've learned quite a lot, even if it wasn't with that much code.\nWe've learned how to:\n- Connect to a database (using the `Engine`'s `connect` method to create a connection and cleaning it up automatically using Python's `with` statement).\n- Prepare a query (try turning a query object into a string using `str`. What did you find?)\n- Execute the provided SQL code using `execute`.\n\nThis basic pattern will repeat itself on the next couple of units as well as it's the most basic that SQLAlchemy allows us to run SQL code against our databases.\n\nNow good luck, see you after your interview at our favorite ~fictional~ music emporium!",
+    "hunksOrder": [
+        "src/insertions.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_insertions.py"
     ],
@@ -11,6 +14,7 @@
         "First, you'll need to create a connection between you and the database. Look into the `Engine` object.",
         "After you've got your connection, you'll need to prepare some SQL statement and execute it."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/insertions.py": {
             "diffType": "MODIFIED",
@@ -50,6 +54,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "ecd364d3cf0c6bed74b0930d022aee43dcf4de79"
 }
