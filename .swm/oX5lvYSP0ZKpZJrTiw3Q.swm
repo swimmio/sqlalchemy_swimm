@@ -4,12 +4,16 @@
     "dod": "Make the tests pass.",
     "description": "Just like any progressive company, `Rock Em' Socks!` cares about the environment.\nAs part of an effort to make the company greener, Big Boss announced a new carpooling system for everyone in the office to use!\nOf course, to maintain that, they need to know how many employees live in each city. Help save the planet!\n\nIn this Unit we'll learn about using aggregating functions in our queries.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions",
     "summary": "In this Unit we've learned how to use aggregating functions in our queries.\nThere are many useful aggregating functions, so it's a good idea to take a better look there too!",
+    "hunksOrder": [
+        "src/count_employees_cities.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_count_employees_cities.py"
     ],
     "hints": [
         "You'll need to both aggregate results in groups and count how many members are in each of these groups. "
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/count_employees_cities.py": {
             "diffType": "MODIFIED",
@@ -38,6 +42,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "033b7f513dbbcf600d0274f95b054018dc03094c"
 }
