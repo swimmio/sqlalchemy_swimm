@@ -4,6 +4,10 @@
     "dod": "Make the tests pass.",
     "description": "Now that you know how to select from certain tables, it's time to _really_ impress the Big Boss!\n\nIn this unit you'll need to write a function that takes an artist's name and returns how many tracks are officialy his.\n\nDo not be tempted to use Python's `len` function, instead find some SQL function that can help you.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_joins.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#using-joins\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions",
     "summary": "In this unit we've learned the final basic steps that will allow us to seamlessly translate SQL queries to a chain of Pythonic functions. Of course there's always more to learn but with mastery over both `join`s and aggregator functions, there's little that can't be done.\n\nBut, your job isn't done yet! Big Boss needs a few more things from an SQLAlchemy master such as yourself. Get ready to unlock the real power of an ORM...",
+    "hunksOrder": [
+        "src/count_artist_tracks.py_0",
+        "src/count_artist_tracks.py_1"
+    ],
     "tests": [
         "python -m pytest tests/test_count_artists_tracks.py"
     ],
@@ -12,6 +16,7 @@
         "Given how the \"composer\" field is unreliable, perhaps think of what info can you cross reference between the different tables?",
         "The \"artists\", \"albums\" and \"tracks\" tables should all be used together. How can you join together their info?"
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/count_artist_tracks.py": {
             "diffType": "MODIFIED",
@@ -55,6 +60,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "f57c600f7e368f6e47a47a2a0145111c74208136"
 }
