@@ -4,12 +4,17 @@
     "dod": "Make the tests pass.",
     "description": "Now after defining our own tables, time to insert into them.\n\nIn this unit we'll learn about how to send SQL statements to our DB, creating transactions and inserting data using the ORM.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_creating_session.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#creating-a-session",
     "summary": "In this unit we've learned how to create a session object and commit data to the DB.\n\nNote that usually we'll define a global `Session` object to be used as our session-factory, which we'll then create local `session` objects from whenever we'd like to make a new transaction.",
+    "hunksOrder": [
+        "src/insertions_orm.py_0",
+        "src/insertions_orm.py_1"
+    ],
     "tests": [
         "python -m pytest tests/test_insertions.py"
     ],
     "hints": [
         "Read about SQLAlchemy's `Session` object and how to work with it."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/insertions_orm.py": {
             "diffType": "MODIFIED",
@@ -58,6 +63,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "4c633d3929c577bffdf21d9a0b97ca1a193121ab"
 }
