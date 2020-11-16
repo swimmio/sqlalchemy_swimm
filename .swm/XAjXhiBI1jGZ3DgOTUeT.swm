@@ -4,6 +4,10 @@
     "dod": "Make the tests pass.",
     "description": "Big Boss is rethinking their brand. `Rock Em' Socks!` might be the biggest musical emporium around but you always need to keep up with the times!\n\nThey want you to figure out what's the most profitable music genre in the store. Perhaps `Pop Em' Socks!` will make a comeback? What about `Jazz Em' Socks!` or `Blues Em' Socks!` ? Only one way to find out!\n\nIn this unit we'll learn about joining tables together for fun and (mostly) profit.\n\n## Recommended References:\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_working_with_joins.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying-with-joins",
     "summary": "In this unit we've determined what `Rock Em' Socks!` name should _really_ be, and on the way learned about `join`ing tables together.\n\nNotice how the first data you query about determines the \"base\" table, on which all joins will be made.\n\nAlso, when joining without a connecting foreign key you'll need to specify the right column to join on (just like in normal SQL).",
+    "hunksOrder": [
+        "src/profitable_music_genre.py_0",
+        "src/profitable_music_genre.py_1"
+    ],
     "tests": [
         "python -m pytest tests/test_profitable_music_genre.py"
     ],
@@ -11,6 +15,7 @@
         "You can use the database's diagram in order to figure out what tables to join.",
         "Notice the order you join the tables in! The first data you query about will determine the base table."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/profitable_music_genre.py": {
             "diffType": "MODIFIED",
@@ -58,6 +63,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "ce3fd524f05a83595a38afbd455f664522a330ee"
 }

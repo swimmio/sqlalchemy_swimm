@@ -4,12 +4,17 @@
     "dod": "Make the tests pass.",
     "description": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_creating_table.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables",
     "summary": "In this unit we've learned how to manually define the most basic Table objects. Later on we'll learn how to both get table metadata automatically from our database and create more flexible Pythonic objects to represent our data.",
+    "hunksOrder": [
+        "src/create_tables.py_0",
+        "utils/people/core.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_create_tables.py"
     ],
     "hints": [
         "Use the primitive sqlalchemy objects to structure your tables and columns as the unit defines, look at the documentation to find the relevant flags and switches."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/create_tables.py": {
             "diffType": "MODIFIED",
@@ -65,6 +70,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "59494453ea2fb51275abe22a11eea2b98c0ce4d7"
 }

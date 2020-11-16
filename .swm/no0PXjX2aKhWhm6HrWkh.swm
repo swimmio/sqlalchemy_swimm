@@ -4,12 +4,16 @@
     "dod": "Make the tests pass.",
     "description": "After a job well done delivering the global statistics, Big Boss reminds you about the American investors and sends you on a new mission: find out the customer statistics in the US of A.\n\nIn this Unit we'll learn to apply filters to our queries.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying",
     "summary": "In this Unit we've learned about how to filter our data based on arbitrary conditions.\nArmed with this knowledge, we can already extract meaningful data out of the tables available to us on any DB!\n\nIn the following Units we'll continue to improve our querying abilities and see just how powerful the `SQLAlchemy ` ORM is.",
+    "hunksOrder": [
+        "src/count_customer_states.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_count_customer_states.py"
     ],
     "hints": [
         "Search for `filter` in the `query` documentation."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/count_customer_states.py": {
             "diffType": "MODIFIED",
@@ -33,6 +37,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "bb79862084b42c5d80b1aafa4dd6ea8027a338a6"
 }
