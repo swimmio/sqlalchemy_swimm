@@ -4,12 +4,16 @@
     "dod": "Make the tests pass.",
     "description": "This year, the employees of `Rock Em' Socks!` all wanted to pay special tribute to each other.\nThey wanted to start their celebrations with the oldest employees first, and the to keep on going until the younger one is reached.\nHelp them by querying the database for everyone's age (with their approval of course!).\n\nIn this Unit we'll learn about limiting our queries.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying",
     "summary": "In this Unit we've learned how to delegate limiting our queries to SQL using `SQLAlchemy`.\n\nWhenever we can delegate any busy work to our DB (assuming it's trivial, such as the case in `limit`) it's usually a good idea (rather than return possibly thousands of results to get a single row, why not request a single row from the start?).",
+    "hunksOrder": [
+        "src/oldest_employees.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_oldest_employees.py"
     ],
     "hints": [
         "SQL has a built in way to only return a certain number of results. Don't use Python slicing."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/oldest_employees.py": {
             "diffType": "MODIFIED",
@@ -41,6 +45,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "805d1a7f77e3c41f822f1e5bf815c485a04be9e2"
 }
