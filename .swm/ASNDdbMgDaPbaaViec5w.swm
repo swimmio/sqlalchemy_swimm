@@ -4,6 +4,9 @@
     "dod": "Make the tests pass.",
     "description": "Congratulations! You've passed the interview and got your dream job at the _Rock Em' Socks!_ music emporium!\n\nYou've just got your first assignment and it's time for you to realize that just like any other typical job requirements, the skills they listed are most certainly not the skills you need to employ. In our case, although they said you just need to learn how to _write_ to DBs, you also need to learn how to _read_ from them to!!\n\nIn this unit you'll need to help filter out music tracks in the `rockemsocks.db` database based on their size (in bytes) and length (in milliseconds).\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_selecting_rows.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_conjunctions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#selecting\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#conjunctions",
     "summary": "In this unit we've learned how to `select` from a table using SQLAlchemy.\n\nNotice how similar it was to `insert`ing into a table: create the relevant query object and execute it through a connection to the database.\n\nAlso note that SQLAlchemy has several ways to use conjunctions: either by using it's own functions (`and_`, `or_`) or by using the overloaded operators it has implmenented for us already (like the bitwise `&` and `|`).",
+    "hunksOrder": [
+        "src/selections.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_selections.py"
     ],
@@ -11,6 +14,7 @@
         "First, you'll need to somehow get access to the database's objects. Revisit the first paragraph in https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables .",
         "Think about how you get data out from a table using regular SQL queries and find the right equivalent in SQLAlchemy."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/selections.py": {
             "diffType": "MODIFIED",
@@ -39,6 +43,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "578145404a7102d48862e1f8b3565f7dab97942d"
 }
