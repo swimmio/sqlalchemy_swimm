@@ -4,6 +4,10 @@
     "dod": "Make the tests pass.",
     "description": "Good news! The `Alphabetical` corporation wants to sponsor `Rock Em' Socks!` !\n\nThere's a big promotion sale happening and they want in, but they have one condition: they want on the poster only the artists who's name first letter is the most common out there. Alphabets!\n\nHelp arrange `Rock Em' Socks` unlikely sponsor's wishes.\n\nIn this unit we'll learn about using SQL functions and chaining multiple directives to our query.\n\n## Recommended References\n* https://docs.sqlalchemy.org/en/13/orm/query.html\n* https://www.sqltutorial.org/sql-having/",
     "summary": "In this unit we've covered a lot:\n* Grouping data using `group_by`.\n* Ordering data using `order_by` in combination with `desc` and `asc`.\n* When to use `filter` and when to use `having`.\n\nMost basic Query APIs have been covered here, so we're almost 100% ORM experts now!",
+    "hunksOrder": [
+        "src/first_letter_artists_count.py_0",
+        "src/first_letter_artists_count.py_1"
+    ],
     "tests": [
         "python -m pytest tests/test_first_letter_artists_count.py"
     ],
@@ -13,6 +17,7 @@
         "Most SQL directives can just be chained one after the other before the \"return functions\" as subsequent query methods.",
         "We can't use `filter` after `group_by`. Read about SQL's `HAVING` directive."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/first_letter_artists_count.py": {
             "diffType": "MODIFIED",
@@ -58,6 +63,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "9a64c7f75da917a7c2ce6f2717e5cf717608e3f6"
 }
