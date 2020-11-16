@@ -4,6 +4,9 @@
     "dod": "Make the tests pass.",
     "description": "It's bookkeeping time in `Rock Em' Socks!` and Big Boss wants you to help the process.\nThey need to quantify the company's outreach (as you all want to keep your status as a true global superpower).\nHelp count the number of countries our customer's came from!\n\nIn this unit we'll learn about querying and grouping data.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_using_query.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_applying_filter.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#querying",
     "summary": "In this unit we've learned how to query data from a database.\nMoreover, we've experimented with one of few ways to get unique results from a database (while, of course, there are many more).",
+    "hunksOrder": [
+        "src/count_customer_countries.py_0"
+    ],
     "tests": [
         "python -m pytest tests/test_count_customer_countries.py"
     ],
@@ -11,6 +14,7 @@
         "Think what SQL statement can help you get unique data (there are a few!)",
         "There's no need to use `len`, `SQLAlchemy` gives you a better way to count the number of rows returned."
     ],
+    "play_mode": "handson",
     "swimmPatch": {
         "src/count_customer_countries.py": {
             "diffType": "MODIFIED",
@@ -34,6 +38,7 @@
             ]
         }
     },
-    "app_version": "0.2.4",
-    "file_version": "1.0.3"
+    "app_version": "0.2.6",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "add01f478630f118d5e34249bf09d282c188c77c"
 }
