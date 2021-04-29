@@ -1,61 +1,63 @@
 {
     "id": "eyfdbNMm5Rr89xCTHz9z",
     "name": "Constrained Table Flipper ORM",
-    "dod": "Make the tests pass.",
-    "description": "Remember \"Table Flipper ORM\"? Well, something there just felt a bit... off. You know that some things just don't make a lot of sense, so why not save ourselves some `if` statements in our Python code and let the DB do the work?\n\nIn this unit we'll learn about adding `constraints` to our database.\n\n## Recommended References\n* https://docs.sqlalchemy.org/en/13/core/constraints.html",
-    "summary": "Using `constraints` allows us to delegate some of our work directly to the database itself.\n\nNotice how there's more than one way to define some of our constraints: either as a paramater passed directly to the `Column` object (this works with SQLAlchemy Core too) or using the `__table_args__` attribute. Some can even be inlined as a parameter to the `Column` object (such as the `unique=True` or `index=True` parameters).",
-    "hunksOrder": [
-        "utils/people/orm_constraints.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_create_tables.py"
-    ],
-    "hints": [
-        "The relevant changes in the function's docstring are UPPERCASED. "
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "utils/people/orm_constraints.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/utils/people/orm_constraints.py b/utils/people/orm_constraints.py\nindex 8a6949c..f18bffc 100644\n--- a/utils/people/orm_constraints.py\n+++ b/utils/people/orm_constraints.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,23 +1,11 @@",
-                        " import sqlalchemy as db",
-                        "-from sqlalchemy.ext.declarative import declarative_base",
-                        "-from sqlalchemy.sql.schema import CheckConstraint, UniqueConstraint",
-                        " ",
-                        " BaseCons = declarative_base()",
-                        " ",
-                        " ",
-                        " class UsersCons(BaseCons):",
-                        "-    __tablename__ = 'users'",
-                        "+    pass",
-                        "-    __table_args__ = (",
-                        "-        CheckConstraint('last_name == \"Simpson\"', name='simpson_clause'),",
-                        "-        UniqueConstraint('first_name', 'last_name', name='unique_name_clause'),",
-                        "-    )",
-                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-    first_name = db.Column(db.String, nullable=False)",
-                        "-    last_name = db.Column(db.String, nullable=False)",
-                        " ",
-                        " ",
-                        " class HobbiesCons(BaseCons):",
-                        "-    __tablename__ = 'hobbies'",
-                        "+    pass",
-                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-    hobby = db.Column(db.String, nullable=False, index=True)",
-                        "-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "utils/people/orm_constraints.py": "8a6949c55e94b931e1607b02846f87a77121f66c"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "fabfd5a8298cbaacc4c53cde4f95af492fd00199"
+    "content": [
+        {
+            "type": "text",
+            "text": "Remember \"Table Flipper ORM\"? Well, something there just felt a bit... off. You know that some things just don't make a lot of sense, so why not save ourselves some `if` statements in our Python code and let the DB do the work?\n\nIn this unit we'll learn about adding `constraints` to our database.\n\n## Recommended References\n* https://docs.sqlalchemy.org/en/13/core/constraints.html"
+        },
+        {
+            "type": "snippet",
+            "path": "utils/people/orm_constraints.py",
+            "comments": [],
+            "firstLineNumber": 1,
+            "lines": [
+                " import sqlalchemy as db",
+                "*from sqlalchemy.ext.declarative import declarative_base",
+                "*from sqlalchemy.sql.schema import CheckConstraint, UniqueConstraint",
+                " ",
+                " BaseCons = declarative_base()",
+                " ",
+                " ",
+                " class UsersCons(BaseCons):",
+                "*    __tablename__ = 'users'",
+                "+    pass",
+                "*    __table_args__ = (",
+                "*        CheckConstraint('last_name == \"Simpson\"', name='simpson_clause'),",
+                "*        UniqueConstraint('first_name', 'last_name', name='unique_name_clause'),",
+                "*    )",
+                "*    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                "*    first_name = db.Column(db.String, nullable=False)",
+                "*    last_name = db.Column(db.String, nullable=False)",
+                " ",
+                " ",
+                " class HobbiesCons(BaseCons):",
+                "*    __tablename__ = 'hobbies'",
+                "+    pass",
+                "*    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                "*    hobby = db.Column(db.String, nullable=False, index=True)",
+                "*    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "Using `constraints` allows us to delegate some of our work directly to the database itself.\n\nNotice how there's more than one way to define some of our constraints: either as a paramater passed directly to the `Column` object (this works with SQLAlchemy Core too) or using the `__table_args__` attribute. Some can even be inlined as a parameter to the `Column` object (such as the `unique=True` or `index=True` parameters)."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "The relevant changes in the function's docstring are UPPERCASED. "
+        ],
+        "tests": [
+            "python -m pytest tests/test_create_tables.py"
+        ]
+    }
 }

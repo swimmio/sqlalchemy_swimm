@@ -1,69 +1,70 @@
 {
     "id": "JqH7RElWKXCQcrOQKfW0",
     "name": "Insertion Syndrome ORM",
-    "dod": "Make the tests pass.",
-    "description": "Now after defining our own tables, time to insert into them.\n\nIn this unit we'll learn about how to send SQL statements to our DB, creating transactions and inserting data using the ORM.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_creating_session.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#creating-a-session",
-    "summary": "In this unit we've learned how to create a session object and commit data to the DB.\n\nNote that usually we'll define a global `Session` object to be used as our session-factory, which we'll then create local `session` objects from whenever we'd like to make a new transaction.",
-    "hunksOrder": [
-        "src/insertions_orm.py_0",
-        "src/insertions_orm.py_1"
-    ],
-    "tests": [
-        "python -m pytest tests/test_insertions.py"
-    ],
-    "hints": [
-        "Read about SQLAlchemy's `Session` object and how to work with it."
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/insertions_orm.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/insertions_orm.py b/src/insertions_orm.py\nindex e32bf16..7c1e4ea 100644\n--- a/src/insertions_orm.py\n+++ b/src/insertions_orm.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,9 +1,7 @@",
-                        " import sqlalchemy as db",
-                        " from utils import people",
-                        "-from sqlalchemy.orm import sessionmaker",
-                        " ",
-                        " engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
-                        "-Session = sessionmaker(bind=engine)",
-                        " ",
-                        " ",
-                        " def data_insertions_orm() -> None:"
-                    ]
-                },
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -13,14 +11,4 @@",
-                        "     - Lisa Simpson, who's hobby is Saxophone.",
-                        "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
-                        "     \"\"\"",
-                        "-    session = Session()",
-                        "+    pass",
-                        "-",
-                        "-    user_homer = people.Users(first_name='Homer', last_name='Simpson')",
-                        "-    user_lisa = people.Users(first_name='Lisa', last_name='Simpson')",
-                        "-    session.add_all([user_homer, user_lisa])",
-                        "-    session.commit()",
-                        "-",
-                        "-    hobby_homer = people.Hobbies(hobby='Beer', user_id=user_homer.id)",
-                        "-    hobby_lisa = people.Hobbies(hobby='Saxophone', user_id=user_lisa.id)",
-                        "-    session.add_all([hobby_homer, hobby_lisa])",
-                        "-    session.commit()"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/insertions_orm.py": "e32bf16d0752c6e53cd23d5c8051ff09d822cb9c"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "4c633d3929c577bffdf21d9a0b97ca1a193121ab"
+    "content": [
+        {
+            "type": "text",
+            "text": "Now after defining our own tables, time to insert into them.\n\nIn this unit we'll learn about how to send SQL statements to our DB, creating transactions and inserting data using the ORM.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_creating_session.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#creating-a-session"
+        },
+        {
+            "type": "snippet",
+            "path": "src/insertions_orm.py",
+            "comments": [],
+            "firstLineNumber": 1,
+            "lines": [
+                " import sqlalchemy as db",
+                " from utils import people",
+                "*from sqlalchemy.orm import sessionmaker",
+                " ",
+                " engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
+                "*Session = sessionmaker(bind=engine)",
+                " ",
+                " ",
+                " def data_insertions_orm() -> None:"
+            ]
+        },
+        {
+            "type": "snippet",
+            "path": "src/insertions_orm.py",
+            "comments": [],
+            "firstLineNumber": 13,
+            "lines": [
+                "     - Lisa Simpson, who's hobby is Saxophone.",
+                "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
+                "     \"\"\"",
+                "*    session = Session()",
+                "+    pass",
+                "*",
+                "*    user_homer = people.Users(first_name='Homer', last_name='Simpson')",
+                "*    user_lisa = people.Users(first_name='Lisa', last_name='Simpson')",
+                "*    session.add_all([user_homer, user_lisa])",
+                "*    session.commit()",
+                "*",
+                "*    hobby_homer = people.Hobbies(hobby='Beer', user_id=user_homer.id)",
+                "*    hobby_lisa = people.Hobbies(hobby='Saxophone', user_id=user_lisa.id)",
+                "*    session.add_all([hobby_homer, hobby_lisa])",
+                "*    session.commit()"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've learned how to create a session object and commit data to the DB.\n\nNote that usually we'll define a global `Session` object to be used as our session-factory, which we'll then create local `session` objects from whenever we'd like to make a new transaction."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "Read about SQLAlchemy's `Session` object and how to work with it."
+        ],
+        "tests": [
+            "python -m pytest tests/test_insertions.py"
+        ]
+    }
 }

@@ -1,49 +1,51 @@
 {
     "id": "ASNDdbMgDaPbaaViec5w",
     "name": "Natural Selection",
-    "dod": "Make the tests pass.",
-    "description": "Congratulations! You've passed the interview and got your dream job at the _Rock Em' Socks!_ music emporium!\n\nYou've just got your first assignment and it's time for you to realize that just like any other typical job requirements, the skills they listed are most certainly not the skills you need to employ. In our case, although they said you just need to learn how to _write_ to DBs, you also need to learn how to _read_ from them to!!\n\nIn this unit you'll need to help filter out music tracks in the `rockemsocks.db` database based on their size (in bytes) and length (in milliseconds).\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_selecting_rows.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_conjunctions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#selecting\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#conjunctions",
-    "summary": "In this unit we've learned how to `select` from a table using SQLAlchemy.\n\nNotice how similar it was to `insert`ing into a table: create the relevant query object and execute it through a connection to the database.\n\nAlso note that SQLAlchemy has several ways to use conjunctions: either by using it's own functions (`and_`, `or_`) or by using the overloaded operators it has implmenented for us already (like the bitwise `&` and `|`).",
-    "hunksOrder": [
-        "src/selections.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_selections.py"
-    ],
-    "hints": [
-        "First, you'll need to somehow get access to the database's objects. Revisit the first paragraph in https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables .",
-        "Think about how you get data out from a table using regular SQL queries and find the right equivalent in SQLAlchemy."
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/selections.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/selections.py b/src/selections.py\nindex efc23dd..d17f9c2 100644\n--- a/src/selections.py\n+++ b/src/selections.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -16,12 +16,3 @@",
-                        "     :rtype: typing.List[db.engine.RowProxy]",
-                        "     \"\"\"",
-                        "     engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)",
-                        "-    rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)",
-                        "-    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']",
-                        "-",
-                        "-    with engine.connect() as connection:",
-                        "-        clause = (tracks.c.Milliseconds > min_time) & (tracks.c.Bytes > min_bytes)",
-                        "-        query = db.select([tracks.c.TrackId]).where(clause)",
-                        "-        results = connection.execute(query).fetchall()",
-                        "-",
-                        "-    return results"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/selections.py": "efc23dd3620fcdfa3e8445c7f52ff76473b42180"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "578145404a7102d48862e1f8b3565f7dab97942d"
+    "content": [
+        {
+            "type": "text",
+            "text": "Congratulations! You've passed the interview and got your dream job at the _Rock Em' Socks!_ music emporium!\n\nYou've just got your first assignment and it's time for you to realize that just like any other typical job requirements, the skills they listed are most certainly not the skills you need to employ. In our case, although they said you just need to learn how to _write_ to DBs, you also need to learn how to _read_ from them to!!\n\nIn this unit you'll need to help filter out music tracks in the `rockemsocks.db` database based on their size (in bytes) and length (in milliseconds).\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_selecting_rows.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_conjunctions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#selecting\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#conjunctions"
+        },
+        {
+            "type": "snippet",
+            "path": "src/selections.py",
+            "comments": [],
+            "firstLineNumber": 16,
+            "lines": [
+                "     :rtype: typing.List[db.engine.RowProxy]",
+                "     \"\"\"",
+                "     engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)",
+                "*    rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)",
+                "*    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']",
+                "*",
+                "*    with engine.connect() as connection:",
+                "*        clause = (tracks.c.Milliseconds > min_time) & (tracks.c.Bytes > min_bytes)",
+                "*        query = db.select([tracks.c.TrackId]).where(clause)",
+                "*        results = connection.execute(query).fetchall()",
+                "*",
+                "*    return results"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've learned how to `select` from a table using SQLAlchemy.\n\nNotice how similar it was to `insert`ing into a table: create the relevant query object and execute it through a connection to the database.\n\nAlso note that SQLAlchemy has several ways to use conjunctions: either by using it's own functions (`and_`, `or_`) or by using the overloaded operators it has implmenented for us already (like the bitwise `&` and `|`)."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "First, you'll need to somehow get access to the database's objects. Revisit the first paragraph in https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables .",
+            "Think about how you get data out from a table using regular SQL queries and find the right equivalent in SQLAlchemy."
+        ],
+        "tests": [
+            "python -m pytest tests/test_selections.py"
+        ]
+    }
 }

@@ -1,48 +1,50 @@
 {
     "id": "oX5lvYSP0ZKpZJrTiw3Q",
     "name": "Carpooling",
-    "dod": "Make the tests pass.",
-    "description": "Just like any progressive company, `Rock Em' Socks!` cares about the environment.\nAs part of an effort to make the company greener, Big Boss announced a new carpooling system for everyone in the office to use!\nOf course, to maintain that, they need to know how many employees live in each city. Help save the planet!\n\nIn this Unit we'll learn about using aggregating functions in our queries.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions",
-    "summary": "In this Unit we've learned how to use aggregating functions in our queries.\nThere are many useful aggregating functions, so it's a good idea to take a better look there too!",
-    "hunksOrder": [
-        "src/count_employees_cities.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_count_employees_cities.py"
-    ],
-    "hints": [
-        "You'll need to both aggregate results in groups and count how many members are in each of these groups. "
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/count_employees_cities.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/count_employees_cities.py b/src/count_employees_cities.py\nindex cb1e088..fbda392 100644\n--- a/src/count_employees_cities.py\n+++ b/src/count_employees_cities.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -16,11 +16,4 @@",
-                        "     :return: List of (City, `Count`) pairings in a descending order according to `Count`.",
-                        "     :rtype: typing.List[typing.Tuple[str, str]]",
-                        "     \"\"\"",
-                        "-    session = Session()",
-                        "+    pass",
-                        "-    empl = rockemsocks.Employees",
-                        "-    return (",
-                        "-        session.query(empl.City, db.func.count(empl.EmployeeId).label('count'))",
-                        "-        .group_by(empl.City)",
-                        "-        .order_by(db.desc('count'))",
-                        "-        .all()",
-                        "-    )"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/count_employees_cities.py": "cb1e0885328d1f25d623c7b1c6536956ef5244d7"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "033b7f513dbbcf600d0274f95b054018dc03094c"
+    "content": [
+        {
+            "type": "text",
+            "text": "Just like any progressive company, `Rock Em' Socks!` cares about the environment.\nAs part of an effort to make the company greener, Big Boss announced a new carpooling system for everyone in the office to use!\nOf course, to maintain that, they need to know how many employees live in each city. Help save the planet!\n\nIn this Unit we'll learn about using aggregating functions in our queries.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions"
+        },
+        {
+            "type": "snippet",
+            "path": "src/count_employees_cities.py",
+            "comments": [],
+            "firstLineNumber": 16,
+            "lines": [
+                "     :return: List of (City, `Count`) pairings in a descending order according to `Count`.",
+                "     :rtype: typing.List[typing.Tuple[str, str]]",
+                "     \"\"\"",
+                "*    session = Session()",
+                "+    pass",
+                "*    empl = rockemsocks.Employees",
+                "*    return (",
+                "*        session.query(empl.City, db.func.count(empl.EmployeeId).label('count'))",
+                "*        .group_by(empl.City)",
+                "*        .order_by(db.desc('count'))",
+                "*        .all()",
+                "*    )"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this Unit we've learned how to use aggregating functions in our queries.\nThere are many useful aggregating functions, so it's a good idea to take a better look there too!"
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "You'll need to both aggregate results in groups and count how many members are in each of these groups. "
+        ],
+        "tests": [
+            "python -m pytest tests/test_count_employees_cities.py"
+        ]
+    }
 }

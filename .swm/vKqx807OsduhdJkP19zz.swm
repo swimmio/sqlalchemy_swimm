@@ -1,66 +1,67 @@
 {
     "id": "vKqx807OsduhdJkP19zz",
     "name": "Joint Effort",
-    "dod": "Make the tests pass.",
-    "description": "Now that you know how to select from certain tables, it's time to _really_ impress the Big Boss!\n\nIn this unit you'll need to write a function that takes an artist's name and returns how many tracks are officialy his.\n\nDo not be tempted to use Python's `len` function, instead find some SQL function that can help you.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_joins.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#using-joins\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions",
-    "summary": "In this unit we've learned the final basic steps that will allow us to seamlessly translate SQL queries to a chain of Pythonic functions. Of course there's always more to learn but with mastery over both `join`s and aggregator functions, there's little that can't be done.\n\nBut, your job isn't done yet! Big Boss needs a few more things from an SQLAlchemy master such as yourself. Get ready to unlock the real power of an ORM...",
-    "hunksOrder": [
-        "src/count_artist_tracks.py_0",
-        "src/count_artist_tracks.py_1"
-    ],
-    "tests": [
-        "python -m pytest tests/test_count_artists_tracks.py"
-    ],
-    "hints": [
-        "Do note that the \"composer\" field in the \"tracks\" DB is unreliable. For example: for certain bands it writes the band name and for others it writes the individual band members.",
-        "Given how the \"composer\" field is unreliable, perhaps think of what info can you cross reference between the different tables?",
-        "The \"artists\", \"albums\" and \"tracks\" tables should all be used together. How can you join together their info?"
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/count_artist_tracks.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/count_artist_tracks.py b/src/count_artist_tracks.py\nindex bbf3237..489d222 100644\n--- a/src/count_artist_tracks.py\n+++ b/src/count_artist_tracks.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,5 +1,4 @@",
-                        " import sqlalchemy as db",
-                        "-from sqlalchemy.sql import func",
-                        " from utils import rockemsocks",
-                        " ",
-                        " "
-                    ]
-                },
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -14,14 +13,3 @@",
-                        "     \"\"\"",
-                        "     engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)",
-                        "     rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)",
-                        "-    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']",
-                        "-    albums = rockemsocks.ROCKEMSOCKSDB_META.tables['albums']",
-                        "-    artists = rockemsocks.ROCKEMSOCKSDB_META.tables['artists']",
-                        "-",
-                        "-    with engine.connect() as connection:",
-                        "-        clause = artists.c.Name == artist_name",
-                        "-        joined_tables = tracks.join(albums).join(artists)",
-                        "-        query = db.select([func.count(tracks.c.TrackId).label('count')]).select_from(joined_tables).where(clause)",
-                        "-        results = connection.execute(query).fetchall()",
-                        "-",
-                        "-    return results[0].count"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/count_artist_tracks.py": "bbf3237b3eac13a8ee7ca2009f514b3db34e033e"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "f57c600f7e368f6e47a47a2a0145111c74208136"
+    "content": [
+        {
+            "type": "text",
+            "text": "Now that you know how to select from certain tables, it's time to _really_ impress the Big Boss!\n\nIn this unit you'll need to write a function that takes an artist's name and returns how many tracks are officialy his.\n\nDo not be tempted to use Python's `len` function, instead find some SQL function that can help you.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_joins.htm\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_using_functions.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#using-joins\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#functions"
+        },
+        {
+            "type": "snippet",
+            "path": "src/count_artist_tracks.py",
+            "comments": [],
+            "firstLineNumber": 1,
+            "lines": [
+                " import sqlalchemy as db",
+                "*from sqlalchemy.sql import func",
+                " from utils import rockemsocks",
+                " ",
+                " "
+            ]
+        },
+        {
+            "type": "snippet",
+            "path": "src/count_artist_tracks.py",
+            "comments": [],
+            "firstLineNumber": 14,
+            "lines": [
+                "     \"\"\"",
+                "     engine = db.create_engine(rockemsocks.ROCKEMSOCKSDB_CONNECTION_STRING)",
+                "     rockemsocks.ROCKEMSOCKSDB_META.reflect(bind=engine)",
+                "*    tracks = rockemsocks.ROCKEMSOCKSDB_META.tables['tracks']",
+                "*    albums = rockemsocks.ROCKEMSOCKSDB_META.tables['albums']",
+                "*    artists = rockemsocks.ROCKEMSOCKSDB_META.tables['artists']",
+                "*",
+                "*    with engine.connect() as connection:",
+                "*        clause = artists.c.Name == artist_name",
+                "*        joined_tables = tracks.join(albums).join(artists)",
+                "*        query = db.select([func.count(tracks.c.TrackId).label('count')]).select_from(joined_tables).where(clause)",
+                "*        results = connection.execute(query).fetchall()",
+                "*",
+                "*    return results[0].count"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've learned the final basic steps that will allow us to seamlessly translate SQL queries to a chain of Pythonic functions. Of course there's always more to learn but with mastery over both `join`s and aggregator functions, there's little that can't be done.\n\nBut, your job isn't done yet! Big Boss needs a few more things from an SQLAlchemy master such as yourself. Get ready to unlock the real power of an ORM..."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "Do note that the \"composer\" field in the \"tracks\" DB is unreliable. For example: for certain bands it writes the band name and for others it writes the individual band members.",
+            "Given how the \"composer\" field is unreliable, perhaps think of what info can you cross reference between the different tables?",
+            "The \"artists\", \"albums\" and \"tracks\" tables should all be used together. How can you join together their info?"
+        ],
+        "tests": [
+            "python -m pytest tests/test_count_artists_tracks.py"
+        ]
+    }
 }

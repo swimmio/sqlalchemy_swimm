@@ -1,73 +1,69 @@
 {
     "id": "8jEJ9lfX2BHTMTEJyimx",
     "name": "Table Flipper ORM",
-    "dod": "Make the tests pass.",
-    "description": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n## Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping",
-    "summary": "In this unit we've started to work with SQLAlchemy's ORM.\n\nCreating a table using the ORM is not so different than the Core so most of the knowledge you've gathered will be applicable in both scenarios.",
-    "hunksOrder": [
-        "src/create_tables_orm.py_0",
-        "utils/people/orm.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_create_tables.py"
-    ],
-    "hints": [
-        "Assuming you've already went through the original Table Flipper, try and convert the columns there to an ORM style."
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/create_tables_orm.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/create_tables_orm.py b/src/create_tables_orm.py\nindex 0a2c760..ac91c2b 100644\n--- a/src/create_tables_orm.py\n+++ b/src/create_tables_orm.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -15,4 +15,3 @@",
-                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
-                        "     \"\"\"",
-                        "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
-                        "-    people.Base.metadata.create_all(engine)"
-                    ]
-                }
-            ]
-        },
-        "utils/people/orm.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/utils/people/orm.py b/utils/people/orm.py\nindex 4988f18..812ef1e 100644\n--- a/utils/people/orm.py\n+++ b/utils/people/orm.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,18 +1,1 @@",
-                        " import sqlalchemy as db",
-                        "-from sqlalchemy.ext.declarative import declarative_base",
-                        "-",
-                        "-Base = declarative_base()",
-                        "-",
-                        "-",
-                        "-class Users(Base):",
-                        "-    __tablename__ = 'users'",
-                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-    first_name = db.Column(db.String, nullable=False)",
-                        "-    last_name = db.Column(db.String, nullable=False)",
-                        "-",
-                        "-",
-                        "-class Hobbies(Base):",
-                        "-    __tablename__ = 'hobbies'",
-                        "-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
-                        "-    hobby = db.Column(db.String, nullable=False)",
-                        "-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/create_tables_orm.py": "0a2c76049b373f0aed913daa74af7592746e594d",
+            "utils/people/orm.py": "4988f1812bc750a114663aa98a3fb93b233965e5"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "34cdb0bde458e9846da6a3a7f1ca4bae1c702e32"
+    "content": [
+        {
+            "type": "text",
+            "text": "Big Boss wants you to move some of the framework to work with a new concept they heard of: the SQLAlchemy ORM!\n\nYou nod, smile, say \"no problem, I'll do it\"... So obviously _now_ is the right time to learn about what this ORM thing is.\n\nIn this unit you'll start to work with the SQLAlchemy ORM. Just like the original Table Flipper using SQLAlchemy Core, only now we're going to define some of our own classes to represent the tables.\n\n## Recommended Rerefences\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_declaring_mapping.htm\n* https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping"
+        },
+        {
+            "type": "snippet",
+            "path": "src/create_tables_orm.py",
+            "comments": [],
+            "firstLineNumber": 15,
+            "lines": [
+                "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
+                "     \"\"\"",
+                "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
+                "*    people.Base.metadata.create_all(engine)"
+            ]
+        },
+        {
+            "type": "snippet",
+            "path": "utils/people/orm.py",
+            "comments": [],
+            "firstLineNumber": 1,
+            "lines": [
+                " import sqlalchemy as db",
+                "*from sqlalchemy.ext.declarative import declarative_base",
+                "*",
+                "*Base = declarative_base()",
+                "*",
+                "*",
+                "*class Users(Base):",
+                "*    __tablename__ = 'users'",
+                "*    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                "*    first_name = db.Column(db.String, nullable=False)",
+                "*    last_name = db.Column(db.String, nullable=False)",
+                "*",
+                "*",
+                "*class Hobbies(Base):",
+                "*    __tablename__ = 'hobbies'",
+                "*    id = db.Column(db.Integer, primary_key=True, autoincrement=True)",
+                "*    hobby = db.Column(db.String, nullable=False)",
+                "*    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've started to work with SQLAlchemy's ORM.\n\nCreating a table using the ORM is not so different than the Core so most of the knowledge you've gathered will be applicable in both scenarios."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "Assuming you've already went through the original Table Flipper, try and convert the columns there to an ORM style."
+        ],
+        "tests": [
+            "python -m pytest tests/test_create_tables.py"
+        ]
+    }
 }

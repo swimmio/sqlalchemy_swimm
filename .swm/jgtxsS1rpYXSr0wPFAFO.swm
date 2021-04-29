@@ -1,76 +1,72 @@
 {
     "id": "jgtxsS1rpYXSr0wPFAFO",
     "name": "Table Flipper",
-    "dod": "Make the tests pass.",
-    "description": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_creating_table.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables",
-    "summary": "In this unit we've learned how to manually define the most basic Table objects. Later on we'll learn how to both get table metadata automatically from our database and create more flexible Pythonic objects to represent our data.",
-    "hunksOrder": [
-        "src/create_tables.py_0",
-        "utils/people/core.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_create_tables.py"
-    ],
-    "hints": [
-        "Use the primitive sqlalchemy objects to structure your tables and columns as the unit defines, look at the documentation to find the relevant flags and switches."
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/create_tables.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/create_tables.py b/src/create_tables.py\nindex e9b6c73..c4a5087 100644\n--- a/src/create_tables.py\n+++ b/src/create_tables.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": [
-                            "Note that you can also create the tables one by one using their relevant `create` methods. Using `meta.create_all()` is a shorthand for creating _all_ of the tables defined with this meta object."
-                        ]
-                    },
-                    "hunkDiffLines": [
-                        "@@ -15,4 +15,3 @@",
-                        "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
-                        "     \"\"\"",
-                        "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
-                        "-    people.PEOPLEDB_META.create_all(engine)"
-                    ]
-                }
-            ]
-        },
-        "utils/people/core.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/utils/people/core.py b/utils/people/core.py\nindex 9228f57..812ef1e 100644\n--- a/utils/people/core.py\n+++ b/utils/people/core.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": []
-                    },
-                    "hunkDiffLines": [
-                        "@@ -1,19 +1,1 @@",
-                        " import sqlalchemy as db",
-                        "-",
-                        "-PEOPLEDB_META = db.MetaData()",
-                        "-",
-                        "-users = db.Table(",
-                        "-    'users',",
-                        "-    PEOPLEDB_META,",
-                        "-    db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
-                        "-    db.Column('first_name', db.String, nullable=False),",
-                        "-    db.Column('last_name', db.String, nullable=False),",
-                        "-)",
-                        "-",
-                        "-hobbies = db.Table(",
-                        "-    'hobbies',",
-                        "-    PEOPLEDB_META,",
-                        "-    db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
-                        "-    db.Column('hobby', db.String, nullable=False),",
-                        "-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),",
-                        "-)"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/create_tables.py": "e9b6c730d13f0df0cbd5f3daba86fb8d4d68a3cd",
+            "utils/people/core.py": "9228f578621befbecbd20dbc657f5e3ae3028bbd"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "59494453ea2fb51275abe22a11eea2b98c0ce4d7"
+    "content": [
+        {
+            "type": "text",
+            "text": "Now that you know how to connect to a database, let's move one step further and learn how to manually create our own tables. Your dream job awaits!\n\nIn this unit you'll need to create `people.db`: a database consisting of various people and their hobbies.\n\nYou'll also need to figure out how to create foreign keys to refer to values in a different table.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_creating_table.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#define-and-create-tables"
+        },
+        {
+            "type": "snippet",
+            "path": "src/create_tables.py",
+            "comments": [
+                "Note that you can also create the tables one by one using their relevant `create` methods. Using `meta.create_all()` is a shorthand for creating _all_ of the tables defined with this meta object."
+            ],
+            "firstLineNumber": 15,
+            "lines": [
+                "         * 'user_id': integer, foreign key connected to 'users' table 'id' column",
+                "     \"\"\"",
+                "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
+                "*    people.PEOPLEDB_META.create_all(engine)"
+            ]
+        },
+        {
+            "type": "snippet",
+            "path": "utils/people/core.py",
+            "comments": [],
+            "firstLineNumber": 1,
+            "lines": [
+                " import sqlalchemy as db",
+                "*",
+                "*PEOPLEDB_META = db.MetaData()",
+                "*",
+                "*users = db.Table(",
+                "*    'users',",
+                "*    PEOPLEDB_META,",
+                "*    db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
+                "*    db.Column('first_name', db.String, nullable=False),",
+                "*    db.Column('last_name', db.String, nullable=False),",
+                "*)",
+                "*",
+                "*hobbies = db.Table(",
+                "*    'hobbies',",
+                "*    PEOPLEDB_META,",
+                "*    db.Column('id', db.Integer, primary_key=True, autoincrement=True),",
+                "*    db.Column('hobby', db.String, nullable=False),",
+                "*    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),",
+                "*)"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've learned how to manually define the most basic Table objects. Later on we'll learn how to both get table metadata automatically from our database and create more flexible Pythonic objects to represent our data."
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "Use the primitive sqlalchemy objects to structure your tables and columns as the unit defines, look at the documentation to find the relevant flags and switches."
+        ],
+        "tests": [
+            "python -m pytest tests/test_create_tables.py"
+        ]
+    }
 }

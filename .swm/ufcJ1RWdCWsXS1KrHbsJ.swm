@@ -1,60 +1,62 @@
 {
     "id": "ufcJ1RWdCWsXS1KrHbsJ",
     "name": "Insertion Syndrome",
-    "dod": "Make the tests pass.",
-    "description": "The final skill you'll need to attain before your big interview for \"Rock Em' Socks!\" is how to insert into them. What good is the database you've just created if you can't put data in it? ~and they said nothing about \"reading data\" on the job listing so...~\n\nIn this unit you'll insert some data (specified in the function's docstring as per usual) into the `people.db` you've created in the previous unit.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_executing_expression.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#insert-expressions",
-    "summary": "In this unit we've learned quite a lot, even if it wasn't with that much code.\nWe've learned how to:\n- Connect to a database (using the `Engine`'s `connect` method to create a connection and cleaning it up automatically using Python's `with` statement).\n- Prepare a query (try turning a query object into a string using `str`. What did you find?)\n- Execute the provided SQL code using `execute`.\n\nThis basic pattern will repeat itself on the next couple of units as well as it's the most basic that SQLAlchemy allows us to run SQL code against our databases.\n\nNow good luck, see you after your interview at our favorite ~fictional~ music emporium!",
-    "hunksOrder": [
-        "src/insertions.py_0"
-    ],
-    "tests": [
-        "python -m pytest tests/test_insertions.py"
-    ],
-    "hints": [
-        "First, you'll need to create a connection between you and the database. Look into the `Engine` object.",
-        "After you've got your connection, you'll need to prepare some SQL statement and execute it."
-    ],
-    "play_mode": "handson",
-    "swimmPatch": {
-        "src/insertions.py": {
-            "diffType": "MODIFIED",
-            "fileDiffHeader": "diff --git a/src/insertions.py b/src/insertions.py\nindex 4fecda3..e74f0bc 100644\n--- a/src/insertions.py\n+++ b/src/insertions.py",
-            "hunks": [
-                {
-                    "swimmHunkMetadata": {
-                        "hunkComments": [
-                            "Notice the usage of Python's `with` statement, it saves us from worrying about manually closing after our resources (a database connection for example)."
-                        ]
-                    },
-                    "hunkDiffLines": [
-                        "@@ -10,21 +10,3 @@",
-                        "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
-                        "     \"\"\"",
-                        "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
-                        "-",
-                        "-    with engine.connect() as connection:",
-                        "-        # Demonstrating single statement insertions",
-                        "-        homer_id: int = connection.execute(",
-                        "-            people.users.insert(",
-                        "-                {'first_name': 'Homer', 'last_name': 'Simpson'},",
-                        "-            ),",
-                        "-        ).inserted_primary_key[0]",
-                        "-        lisa_id: int = connection.execute(",
-                        "-            people.users.insert(",
-                        "-                {'first_name': 'Lisa', 'last_name': 'Simpson'},",
-                        "-            ),",
-                        "-        ).inserted_primary_key[0]",
-                        "-        # Demonstrating multiple statements generation",
-                        "-        connection.execute(",
-                        "-            people.hobbies.insert(),",
-                        "-            [{'hobby': 'Beer', 'user_id': homer_id}, {'hobby': 'Saxophone', 'user_id': lisa_id}],",
-                        "-        )"
-                    ]
-                }
-            ]
+    "file_version": "2.0.1",
+    "meta": {
+        "app_version": "0.4.4-0",
+        "file_blobs": {
+            "src/insertions.py": "4fecda3fe07eabe87b04ea5e94c035ddd481d4cf"
         }
     },
-    "app_version": "0.2.6",
-    "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "ecd364d3cf0c6bed74b0930d022aee43dcf4de79"
+    "content": [
+        {
+            "type": "text",
+            "text": "The final skill you'll need to attain before your big interview for \"Rock Em' Socks!\" is how to insert into them. What good is the database you've just created if you can't put data in it? ~and they said nothing about \"reading data\" on the job listing so...~\n\nIn this unit you'll insert some data (specified in the function's docstring as per usual) into the `people.db` you've created in the previous unit.\n\n## Recommended References\n* https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_core_executing_expression.htm\n* https://docs.sqlalchemy.org/en/13/core/tutorial.html#insert-expressions"
+        },
+        {
+            "type": "snippet",
+            "path": "src/insertions.py",
+            "comments": [
+                "Notice the usage of Python's `with` statement, it saves us from worrying about manually closing after our resources (a database connection for example)."
+            ],
+            "firstLineNumber": 10,
+            "lines": [
+                "     Note that you'll need to create entries in both the 'users' table and the 'hobbies' table.",
+                "     \"\"\"",
+                "     engine = db.create_engine(people.PEOPLEDB_CONNECTION_STRING)",
+                "*",
+                "*    with engine.connect() as connection:",
+                "*        # Demonstrating single statement insertions",
+                "*        homer_id: int = connection.execute(",
+                "*            people.users.insert(",
+                "*                {'first_name': 'Homer', 'last_name': 'Simpson'},",
+                "*            ),",
+                "*        ).inserted_primary_key[0]",
+                "*        lisa_id: int = connection.execute(",
+                "*            people.users.insert(",
+                "*                {'first_name': 'Lisa', 'last_name': 'Simpson'},",
+                "*            ),",
+                "*        ).inserted_primary_key[0]",
+                "*        # Demonstrating multiple statements generation",
+                "*        connection.execute(",
+                "*            people.hobbies.insert(),",
+                "*            [{'hobby': 'Beer', 'user_id': homer_id}, {'hobby': 'Saxophone', 'user_id': lisa_id}],",
+                "*        )"
+            ]
+        },
+        {
+            "type": "text",
+            "text": "In this unit we've learned quite a lot, even if it wasn't with that much code.\nWe've learned how to:\n- Connect to a database (using the `Engine`'s `connect` method to create a connection and cleaning it up automatically using Python's `with` statement).\n- Prepare a query (try turning a query object into a string using `str`. What did you find?)\n- Execute the provided SQL code using `execute`.\n\nThis basic pattern will repeat itself on the next couple of units as well as it's the most basic that SQLAlchemy allows us to run SQL code against our databases.\n\nNow good luck, see you after your interview at our favorite ~fictional~ music emporium!"
+        }
+    ],
+    "task": {
+        "dod": "Make the tests pass.",
+        "hints": [
+            "First, you'll need to create a connection between you and the database. Look into the `Engine` object.",
+            "After you've got your connection, you'll need to prepare some SQL statement and execute it."
+        ],
+        "tests": [
+            "python -m pytest tests/test_insertions.py"
+        ]
+    }
 }
